@@ -2,6 +2,7 @@ import express, { Application, NextFunction, Request, Response } from "express";
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import path from "node:path";
+import { logger } from "./logger";
 import { nunjucks } from "./utils/nunjucks";
 import { auth } from "./auth";
 import { getNodeEnv, getServiceUrl } from "./utils/config"; 
@@ -108,8 +109,7 @@ declare module 'express-session' {
   const server = await app.listen(port);
   const listeningAddress = server.address();
   if (listeningAddress && typeof listeningAddress === "object") {
-    console.log(
-      `Server listening ${listeningAddress.address}:${listeningAddress.port}`
-    );
+    logger.info(`Server listening ${listeningAddress.address}:${listeningAddress.port}`);
+    logger.info(`http://localhost:${listeningAddress.port}`);     
   }
 })();

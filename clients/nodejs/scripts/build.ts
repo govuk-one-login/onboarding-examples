@@ -4,7 +4,8 @@ import * as ts from "typescript";
 
 const SRC_DIRECTORY = "src";
 const DIST_DIRECTORY = "dist";
-const COPY_DIRECTORIES = ["views", "public"];
+/**const COPY_DIRECTORIES = ["views", "public"]; */
+const COPY_DIRECTORIES = ["views"];
 
 /** Copy directories to dest directory */
 async function copyDirectories() {

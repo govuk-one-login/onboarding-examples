@@ -5,6 +5,7 @@ import asyncHandler from "./utils/async-handler";
 import { hash, readPrivateKey, readPublicKey } from "./utils/crypto";
 import { createPrivateKeyClient, createClientSecretClient, createIssuer } from "./utils/oidc-client";
 import { CLAIMS, SCOPES } from "./utils/app.constants";
+import { logger } from "./logger";
 
 // import { Resolver } from "did-resolver";
 // import { getResolver as getWebResolver } from "web-did-resolver";
@@ -41,7 +42,7 @@ const ID_TOKEN_COOKIE_NAME = process.env.SESSION_NAME + "-id-token";
 
 //     return key;
 //   } catch (error) {
-//     console.error('Error retrieving public key:', error);
+//     logger.error('Error retrieving public key:', error);
 //     throw error;
 //   }}
 
@@ -58,16 +59,14 @@ async function getResult(
     throw new Error("No access token received");
   }
   else {
-    console.log("Access token");
-    console.log(tokenSet.access_token);
+    logger.info("Access token = "+tokenSet.access_token);
   }
 
   if (!tokenSet.id_token) {
     throw new Error("No id token received");
   }
   else {
-    console.log("ID token");
-    console.log(tokenSet.id_token);
+    logger.info("ID token = " + tokenSet.id_token);
   }
 
   const accessToken = decodeJwt(tokenSet.access_token);
@@ -84,8 +83,7 @@ async function getResult(
     tokenSet.access_token
   );
   
-  console.log("Userinfo");
-  console.log(JSON.stringify(userinfo, null, 2));
+  logger.info("Userinfo = "+JSON.stringify(userinfo, null, 2));
 
   // If the core identity claim is not present GOV.UK One Login
   // was not able to prove your user’s identity or the claim
@@ -115,7 +113,7 @@ async function getResult(
     
     // Check that the sub in the coreIdentity matches the one in the idToken, accessToken and userinfo
     if (payload.sub === idToken.sub && payload.sub === accessToken.sub && payload.sub === userinfo.sub) {
-      console.log("All subs match");
+      logger.info("All subs match");
     } else {
       throw new Error("coreIdentityJWTValidationFailed: unexpected \"sub\" claim value");
     }
@@ -224,17 +222,17 @@ export async function auth(configuration: AuthMiddlewareConfiguration) {
   router.get("/oidc/login", (req: Request, res: Response) => {
     
     const vtr = JSON.stringify([configuration.auth_vtr]);
-    console.log("vtr=" + vtr);
+    logger.info("vtr=" + vtr);
     // Construct the url and redirect on to the authorization endpoint
     const authorizationUrl = buildAuthorizationUrl(configuration, req, res, client, vtr, undefined, req.query);
-    console.log(authorizationUrl);
+    logger.info(authorizationUrl);
     res.redirect(authorizationUrl);
   });
 
   router.get("/oidc/verify", (req: Request, res: Response) => {
 
     const vtr = JSON.stringify([configuration.idv_vtr]);
-    console.log("vtr=" + vtr);
+    logger.info("vtr=" + vtr);
     const claims = {
       userinfo: {
         [CLAIMS.CoreIdentity]: null,
@@ -244,7 +242,7 @@ export async function auth(configuration: AuthMiddlewareConfiguration) {
     }
     // Construct the url and redirect on to the authorization endpoint
     const authorizationUrl = buildAuthorizationUrl(configuration, req, res, client, vtr, claims, req.query);
-    console.log(authorizationUrl);
+    logger.info(authorizationUrl);
     res.redirect(authorizationUrl);
   });
     
@@ -299,7 +297,7 @@ export async function auth(configuration: AuthMiddlewareConfiguration) {
     req.session.destroy(function(err) {
       // cannot access session here
     });
-    console.log(logoutUrl);
+    logger.info(logoutUrl);
     res.redirect(logoutUrl);
   });
 
@@ -312,7 +310,7 @@ export async function auth(configuration: AuthMiddlewareConfiguration) {
   // router.post("/back-channel-logout",asyncHandler(async (req: Request, res: Response) => {
 
   //     const logoutToken =await verifyLogoutToken(req);
-  //     console.log(logoutToken);
+  //     logger.info(logoutToken);
   //     if (logoutToken && validateLogoutTokenClaims(logoutToken, req)) {
   //       await destroyUserSessions(logoutToken.sub!, req.sessionStore);
   //       res.sendStatus(HTTP_STATUS_CODES.OK);
@@ -326,14 +324,14 @@ export async function auth(configuration: AuthMiddlewareConfiguration) {
   // }));
 
   // async function destroyUserSessions(sub: string, store: Express.SessionStore): Promise<Boolean> {
-  //   console.log("store");
-  //   console.log(store);
+  //   logger.info("store");
+  //   logger.info(store);
   //   store.all!((error: any, session: any) => {
-  //     console.log("session");
-  //     console.log(session);
+  //     logger.info("session");
+  //     logger.info(session);
   //     Object.entries(session).forEach( (key, index) => {
-  //       console.log("key");
-  //       console.log(key);
+  //       logger.info("key");
+  //       logger.info(key);
   //       if (session[index].user.sub == sub) {
   //         store.destroy(key.toString());
   //         return true;
@@ -360,26 +358,26 @@ export async function auth(configuration: AuthMiddlewareConfiguration) {
   
   //     return payload as LogoutToken;
   //   } catch (e) {
-  //     console.error(getErrorMessage(e));
+  //     logger.error(getErrorMessage(e));
   //     return undefined;
   //   }
   // };
 
   // function validateLogoutTokenClaims(token: LogoutToken, req: Request): boolean {
   //   if (!token.sub || /^\s*$/.test(token.sub)) {
-  //     console.error(`Logout token does not contain a subject`);
+  //     logger.error(`Logout token does not contain a subject`);
   //     return false;
   //   }
   //   if (!token.events) {
-  //     console.error(`Logout token does not contain any event`);
+  //     logger.error(`Logout token does not contain any event`);
   //     return false;
   //   }
   //   if (!(BACK_CHANNEL_LOGOUT_EVENT in token.events)) {
-  //     console.error(`Logout token does not contain correct event: ${token.events}`);
+  //     logger.error(`Logout token does not contain correct event: ${token.events}`);
   //     return false;
   //   }
   //   if (Object.keys(token.events[BACK_CHANNEL_LOGOUT_EVENT]).length > 0) {
-  //     console.error(`Logout token back-channel logout event is not an empty object`);
+  //     logger.error(`Logout token back-channel logout event is not an empty object`);
   //     return false;
   //   }
   //   return true;
