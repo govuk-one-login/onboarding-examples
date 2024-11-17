@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0"
+  TenantId="{Settings:Tenant}.onmicrosoft.com"
+  PolicyId="B2C_1A_GovUkOneLogin"
+  PublicPolicyUri="http://{Settings:Tenant}.onmicrosoft.com/B2C_1A_GovUkOneLogin">
+
+    <!--
+    A very minimal custom policy to authenticate with GOV.UK One Login
+    See reference documentation:
+    https://github.com/MicrosoftDocs/azure-docs/blob/main/articles/active-directory-b2c/oauth2-technical-profile.md
+    -->
+
+    <BuildingBlocks>
+      <ClaimsSchema>
+        <ClaimType Id="objectId">
+          <DisplayName>User's Object ID</DisplayName>
+          <DataType>string</DataType>
+          <DefaultPartnerClaimTypes>
+            <Protocol Name="OAuth2" PartnerClaimType="sub" />
+          </DefaultPartnerClaimTypes>
+        </ClaimType>
+
+        <ClaimType Id="email">
+          <DisplayName>Email Address</DisplayName>
+          <DataType>string</DataType>
+          <DefaultPartnerClaimTypes>
+            <Protocol Name="OAuth2" PartnerClaimType="email" />
+          </DefaultPartnerClaimTypes>
+        </ClaimType>
+  
+        <ClaimType Id="phone">
+          <DisplayName>Phone Number</DisplayName>
+          <DataType>string</DataType>
+          <DefaultPartnerClaimTypes>
+            <Protocol Name="OAuth2" PartnerClaimType="phone" />
+          </DefaultPartnerClaimTypes>
+        </ClaimType>
+
+      </ClaimsSchema>
+    </BuildingBlocks>
+
+    <ClaimsProviders>
+      <ClaimsProvider>
+        <!-- The technical profile(s) defined in this section is required by the framework to be included in all policies. -->
+        <DisplayName>Trustframework Policy Engine TechnicalProfiles</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="TpEngine_c3bd4fe2-1775-4013-b91d-35f16d377d13">
+            <DisplayName>Trustframework Policy Engine Default Technical Profile</DisplayName>
+            <Protocol Name="None" />
+            <Metadata>
+              <Item Key="url">{service:te}</Item>
+            </Metadata>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+  
+      <ClaimsProvider>
+        <DisplayName>GOV.UK One Login</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="GovUkOneLogin-OAuth2">
+            <DisplayName>GOV.UK One Login</DisplayName>
+            <Description>Login with GOV.UK One Login</Description>
+            <Protocol Name="OAuth2" />
+            <Metadata>
+              <Item Key="METADATA">https://{Settings:GovUkOneLoginDomain}/.well-known/openid-configuration</Item>
+              <Item Key="client_id">b2c</Item>
+              <Item Key="response_types">code</Item>
+              <Item Key="response_mode">query</Item>
+              <Item Key="scope">openid email phone</Item>
+              <Item Key="token_endpoint_auth_method">private_key_jwt</Item>
+              <Item Key="token_signing_algorithm">RS256</Item>
+              <Item Key="HttpBinding">POST</Item>
+              <Item Key="ClaimsEndpoint">https://{Settings:GovUkOneLoginDomain}/userinfo</Item>
+              <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>
+            </Metadata>
+            <CryptographicKeys>
+              <!-- Create this key in the Azure portal -->
+              <Key Id="assertion_signing_key" StorageReferenceId="B2C_1A_GovUkOneLoginAssertionSigningKey" />
+            </CryptographicKeys>
+            <OutputClaims>
+              <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+            </OutputClaims>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+
+      <ClaimsProvider>
+        <!-- 
+        The technical profile(s) defined in this section specify Token Issuers that are used by the required SendClaims step of a User Journey 
+        to return a token to the caller.
+        -->
+        <DisplayName>Token Issuer Technical Profiles</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="JwtIssuer">
+            <DisplayName>JWT Issuer</DisplayName>
+            <Protocol Name="None" />
+            <OutputTokenFormat>JWT</OutputTokenFormat>
+            <Metadata>
+              <Item Key="client_id">{service:te}</Item>
+              <!-- <Item Key="issuer_refresh_token_user_identity_claim_type">objectId</Item> -->
+              <Item Key="SendTokenResponseBodyWithJsonNumbers">true</Item>
+            </Metadata>
+            <CryptographicKeys>
+              <Key Id="issuer_secret" StorageReferenceId="B2C_1A_TokenSigningKeyContainer" />
+              <Key Id="issuer_refresh_token_key" StorageReferenceId="B2C_1A_TokenEncryptionKeyContainer" />
+            </CryptographicKeys>
+            <InputClaims />
+            <OutputClaims />
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider> 
+    </ClaimsProviders>
+  
+    <UserJourneys>
+      <UserJourney Id="GovUkOneLoginUserJourney">
+        <OrchestrationSteps>
+          <OrchestrationStep Order="1" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="GovUkOneLoginExchange" TechnicalProfileReferenceId="GovUkOneLogin-OAuth2" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="2" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        </OrchestrationSteps>
+      </UserJourney>
+    </UserJourneys>
+  
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="GovUkOneLoginUserJourney"/>
+      <TechnicalProfile Id="GovUkOneLoginPolicyProfile">
+        <DisplayName>GOV.UK One Login Policy Profile</DisplayName>
+        <Protocol Name="OAuth2" />
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub" />
+      </TechnicalProfile>
+    </RelyingParty>  
+  </TrustFrameworkPolicy>
