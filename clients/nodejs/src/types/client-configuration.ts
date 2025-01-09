@@ -23,4 +23,5 @@ export default interface ClientConfiguration {
   serviceUrl?: string;
   openidClientConfiguration?: openidClient.Configuration;
   immediateRedirect: boolean;
+  requireJAR: boolean;
 }

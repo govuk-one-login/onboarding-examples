@@ -8,12 +8,10 @@
     <main class="govuk-main-wrapper">
 
       <h1 class="govuk-heading-l">{{ serviceName | safe }}</h1>
-      <p class="govuk-body">
-        Click the big green button to get started.
-      </p>
+      
 
       {{ govukButton({
-        text: "Start by logging in",
+        text: "Make a request for authentication",
         href: "/oidc/login",
         isStartButton: true
       }) }}

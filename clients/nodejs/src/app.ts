@@ -79,7 +79,7 @@ const createApp = (): Application => {
     res.render("start.njk", 
       {
         authenticated: isAuthenticated(req, res),
-        serviceName: "Example service",
+        serviceName: "Example Service",
         // GOV.UK header config
         homepageUrl: "https://gov.uk",
         serviceUrl: `${getServiceUrl()}`
@@ -93,7 +93,7 @@ const createApp = (): Application => {
       { 
         authenticated: true,
         // page config
-        serviceName: "Example service",  
+        serviceName: "Example Service",  
         resultData: req.session.user,
         // Service header config
         isProduction: getNodeEnv() == "development" ? false : true

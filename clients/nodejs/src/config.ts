@@ -28,13 +28,13 @@ export class Config {
                 : "https://oidc.integration.account.gov.uk/.well-known/openid-configuration",
             ivIssuer: process.env.IV_ISSUER ?? "",
             ivDidUri: process.env.IV_DID_URI ?? "",
-            scopes: process.env.SCOPES
-             ? process.env.SCOPES.split(",")
+            scopes: process.env.OIDC_SCOPES
+             ? process.env.OIDC_SCOPES.split(",")
              : ["openid", "email", "phone"],
             authorizeRedirectUrl: process.env.OIDC_AUTHORIZE_REDIRECT_URL ?? "",
             postLogoutRedirectUrl: process.env.OIDC_POST_LOGOUT_REDIRECT_URL ?? "",
-            claims: process.env.CLAIMS
-                ? (process.env.CLAIMS.split(",") as UserIdentityClaim[])
+            claims: process.env.OIDC_CLAIMS
+                ? (process.env.OIDC_CLAIMS.split(",") as UserIdentityClaim[])
                 : ["https://vocab.account.gov.uk/v1/coreIdentityJWT"],
             idTokenSigningAlgorithm: process.env.OIDC_ID_TOKEN_SIGNING_ALG ?? "ES256",
             tokenAuthMethod: process.env.OIDC_TOKEN_AUTH_METHOD ?? "private_key_jwt",
@@ -42,7 +42,8 @@ export class Config {
             identityVtr: process.env.IDENTITY_VECTOR_OF_TRUST ?? "Cl.Cm.P2",
             uiLocales: process.env.UI_LOCALES ?? "en",
             serviceUrl: process.env.SERVICE_URL ?? "",
-            immediateRedirect: process.env.IMMEDIATE_REDIRECT == "true"
+            immediateRedirect: process.env.IMMEDIATE_REDIRECT == "true",
+            requireJAR: process.env.REQUIRE_JAR == "true"
         };
     }
 
@@ -140,5 +141,9 @@ export class Config {
 
     public getImmediateRedirect(): boolean {
         return this.clientConfiguration.immediateRedirect;
+    }
+
+    public getRequireJAR(): boolean {
+        return this.clientConfiguration.requireJAR;
     }
 }

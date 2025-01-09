@@ -18,8 +18,21 @@ export const authorizeController = async (
         let privateKey = await getPrivateKey(clientConfig.getPrivateKey());
         let openidClientConfiguration : openidClient.Configuration = await getDiscoveryMetadata(clientConfig, privateKey)
         const parameters = getAuthorizeParameters(clientConfig, res, verificationRequired);
+        let redirectTo: URL;
         
-        let redirectTo = openidClient.buildAuthorizationUrl(openidClientConfiguration, parameters);
+        if (clientConfig.getRequireJAR()) {
+            const issuer: string = clientConfig.getIssuer()
+            let substituteAudience: openidClient.ModifyAssertionOptions = {
+                [openidClient.modifyAssertion]: (header, _payload) => {
+                    _payload.aud = `${issuer}authorize`
+                }
+            };
+            redirectTo = await openidClient.buildAuthorizationUrlWithJAR(openidClientConfiguration, parameters, privateKey, substituteAudience);
+            // Need to manually add response_type and scope to the query string because the openid-client library doesn't
+            redirectTo.href = redirectTo.href + "&response_type=code&scope=openid";
+        } else {
+            redirectTo = openidClient.buildAuthorizationUrl(openidClientConfiguration, parameters);
+        }
 
         res.redirect(redirectTo.href);
     } catch (error) {

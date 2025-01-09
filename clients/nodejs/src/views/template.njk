@@ -1,5 +1,6 @@
 {% extends "govuk/template.njk" %}
 {% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
 {% from "header/service-header.njk" import govukOneLoginServiceHeader %}
 
 {% block pageTitle %}GOV.UK One Login Sample{% endblock %}
@@ -53,4 +54,30 @@
       .CrossServiceHeader(oneLoginHeader)
       .init();
   </script>
+{% endblock %}
+
+{% block footer %}
+  {{ govukFooter({
+  meta: {
+    items: [
+      {
+        href: "https://github.com/govuk-one-login/onboarding-examples/issues/new?body=Problem+with%27onboarding-examples+Typescript+example%27+%28https%3A%2F%2Fgithub.com/govuk-one-login/onboarding/clients/nodejs%2F%29&labels=bug&title=Re%3A+%27onboarding-examples/client/nodejs%27",
+        text: "Report problem"
+      },
+      {
+        href: "https://github.com/govuk-one-login/onboarding-examples/tree/main/clients/nodejs",
+        text: "GitHub Repo"
+      },
+      {
+        href: "https://github.com/govuk-one-login/simulator",
+        text: "Simulator Repo"
+      },
+      {
+        href: "https://docs.sign-in.service.gov.uk/how-gov-uk-one-login-works/",
+        text: "Tech docs"
+      }
+  
+    ]
+  }
+}) }}
 {% endblock %}
