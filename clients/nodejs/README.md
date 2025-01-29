@@ -48,7 +48,7 @@ Resolve dependencies and build the app
 
 ```
 nvm install 22.11.0 && nvm use 22.11.0
-npm ci && npm npm run build
+npm ci && npm run build
 ```
 
 ### 3. Run the example
