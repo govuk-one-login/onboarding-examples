@@ -8,11 +8,13 @@
     <main class="govuk-main-wrapper">
 
       <h1 class="govuk-heading-l">You are logged in to the {{ serviceName }}</h1>
-
+      
+      {% if identitySupported %}
       {{ govukButton({
         text: "Make a request for authentication and identity",
         href: "oidc/verify"
       }) }}
+      {% endif %}
 
       <h2 class="govuk-heading-m">Access token</h2>
       <p class="govuk-body">
