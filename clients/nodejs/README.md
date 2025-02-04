@@ -82,5 +82,5 @@ npm run dev:sim
 
 1. browse to [http://localhost:8080](http://localhost:8080)
 1. press the "Make a request for authentication" button and review the returned data
-1. press the "Make a request for authentication and identity" button to check identity and review the returned data 
+1. press the "Make a request for authentication and identity" button to check identity and review the returned data
 1. click the "Sign out" link in the service header
