@@ -34,14 +34,15 @@ export const getAuthorizeParameters = (
     }
 
     if (idvRequired) {
-        const claimsRequest = {
-            userinfo: {
-                ["https://vocab.account.gov.uk/v1/address"]: null,
-                ["https://vocab.account.gov.uk/v1/coreIdentityJWT"]: null,
-                ["https://vocab.account.gov.uk/v1/returnCode"]: null
-            }
-        }
-        parameters["claims"] = JSON.stringify(claimsRequest);
+        const claims = clientConfig.getClaims();
+
+        const result = {
+            userinfo: Object.fromEntries(
+                claims.map(claim => [claim, null])
+            )
+        };
+
+        parameters["claims"] = JSON.stringify(result);
     }
 
     return parameters;

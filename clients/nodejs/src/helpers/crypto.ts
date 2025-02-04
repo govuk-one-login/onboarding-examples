@@ -1,4 +1,3 @@
-// import { createPublicKey } from "node:crypto";
 import { Config } from "../config.js";
 import { KeyLike, JWK, importJWK } from "jose";
 import DIDKeySet from "../types/did-keyset.js";
@@ -6,11 +5,6 @@ import { DIDDocument, DIDResolutionResult, Resolver } from 'did-resolver';
 import { getResolver } from 'web-did-resolver';
 import { logger } from "../logger.js";
 import fetch from "node-fetch";
-
-// export function readPublicKey(publicKey: string) {
-//     const armouredKey = `-----BEGIN PUBLIC KEY-----\n${publicKey}\n-----END PUBLIC KEY-----`;
-//     return createPublicKey(armouredKey);
-// };
 
 interface JWTHeader {
   kid?: string;
@@ -46,9 +40,10 @@ export const getIdentitySigningPublicKey = async (
   
   let publicKeys: DIDKeySet[] = clientConfig.getIvPublicKeys();    
   const didUri = clientConfig.getIvDidUri();
+  const issuer = clientConfig.getIvIssuer();
 
   if (publicKeys === undefined) {
-      publicKeys = await fetchPublicKeys(didUri);
+      publicKeys = await fetchPublicKeys(didUri, issuer);
       clientConfig.setIvPublicKeys(publicKeys);
   }
 
@@ -78,7 +73,8 @@ export const getIdentitySigningPublicKey = async (
 }
 
 export const fetchPublicKeys = async (
-  did: string
+  did: string,
+  issuer: string
 ): Promise<DIDKeySet[]> => {
 
     // Download the DID document
@@ -88,7 +84,8 @@ export const fetchPublicKeys = async (
 
     if (did.includes("localhost")) {
       // bit of a hack to get the DID document from http://localhost
-      const response = await fetch("http://localhost:3000/.well-known/did.json"); // local endpoint
+      // didResolver refuses to connect to localhost and http endpoints
+      const response = await fetch(issuer + ".well-known/did.json"); // local endpoint
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
