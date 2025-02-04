@@ -29,7 +29,9 @@ cd onboarding-examples/clients/nodejs
 ```
 
 ## How to run the example and simulator
+
 Two ways to run the example and simulator locally:
+
 - Docker compose
 - Node.js using source source with the simulator running in Docker
 
@@ -40,7 +42,6 @@ This is the quickest method if you want to quickly see the data returned.
 ```bash
 docker compose up 
 ```
-
 
 ### Run the example from source with Node.js and the simulator in a Docker container
 
