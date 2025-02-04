@@ -14,6 +14,7 @@
 - when integrating with external OpenID Connect identity providers Amazon cognito does not support:
   - `private_key_jwt` token authentication
   - `nonce` parameter used to mitigate authorization code injection attacks
+  - custom parameters such as `vtr` used to change default [authentication level](https://docs.sign-in.service.gov.uk/before-integrating/choose-the-level-of-authentication/#choose-the-level-of-authentication-for-your-service)
 
 To use Amazon Cognito with GOV.UK One Login you will need to contact support to enable the following options. These cannot be enabled using the [Admin tool](https://admin.sign-in.service.gov.uk).
 
