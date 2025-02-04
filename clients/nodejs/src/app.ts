@@ -3,7 +3,7 @@ import session from "express-session";
 import cookieParser from "cookie-parser";
 import path from "node:path";
 import { setupNunjucks } from "./utils/nunjucks.js";
-import { getNodeEnv, getServiceUrl } from "./utils/config.js"; 
+import { Config } from "./config.js";
 import { AuthenticatedUser, isAuthenticated } from "./utils/helpers.js";
 import { authorizeController } from "./components/authorize/authorize-controller.js";
 import { callbackController } from "./components/callback/callback-controller.js";
@@ -52,6 +52,7 @@ const createApp = (): Application => {
     saveUninitialized: true
   }));
 
+  const clientConfig = Config.getInstance();
 
   app.get("/oidc/login", (req: Request, res: Response, next: NextFunction) => 
     authorizeController(req, res, next, false)
@@ -82,7 +83,7 @@ const createApp = (): Application => {
         serviceName: "Example Service",
         // GOV.UK header config
         homepageUrl: "https://gov.uk",
-        serviceUrl: `${getServiceUrl()}`
+        serviceUrl: `${clientConfig.getServiceUrl()}`
       }
     );
   });
@@ -96,7 +97,7 @@ const createApp = (): Application => {
         serviceName: "Example Service",  
         resultData: req.session.user,
         // Service header config
-        isProduction: getNodeEnv() == "development" ? false : true
+        isProduction: clientConfig.getNodeEnv() == "development" ? false : true
       });
   });
 
