@@ -3,6 +3,7 @@ import * as openidClient from "openid-client";
 import DIDKeySet from "../types/did-keyset.js";
 
 export default interface ClientConfiguration {
+  nodeEnv: string;
   clientId?: string;
   privateKey?: string;
   clientSecret?: string;
@@ -24,4 +25,5 @@ export default interface ClientConfiguration {
   openidClientConfiguration?: openidClient.Configuration;
   immediateRedirect: boolean;
   requireJAR: boolean;
+  identitySupported: boolean;
 }

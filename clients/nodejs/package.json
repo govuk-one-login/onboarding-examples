@@ -19,6 +19,7 @@
   "scripts": {
     "build": "npx pkgroll",
     "dev:int": "cp .env.integration .env && tsx watch --clear-screen=false src/server.ts",
+    "dev:cognito": "cp .env.cognito .env && tsx watch --clear-screen=false src/server.ts",
     "dev:sim": "cp .env.simulator .env && tsx watch --clear-screen=false src/server.ts",
     "generatekeys": "test -a private_key.pem || (openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048 && openssl rsa -pubout -in private_key.pem -out public_key.pem)",
     "simulator:config": "curl -s localhost:3000/config | jq -S .",

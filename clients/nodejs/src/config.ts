@@ -19,6 +19,7 @@ export class Config {
         dotenv.config();
         
         this.clientConfiguration = {
+            nodeEnv: process.env.NODE_ENV || "development",
             clientId: process.env.OIDC_CLIENT_ID ?? "",
             privateKey: process.env.OIDC_PRIVATE_KEY ?? "",
             clientSecret: process.env.OIDC_CLIENT_SECRET ?? "",           
@@ -43,7 +44,8 @@ export class Config {
             uiLocales: process.env.UI_LOCALES ?? "en",
             serviceUrl: process.env.SERVICE_URL ?? "",
             immediateRedirect: process.env.IMMEDIATE_REDIRECT == "true",
-            requireJAR: process.env.REQUIRE_JAR == "true"
+            requireJAR: process.env.REQUIRE_JAR == "true",
+            identitySupported: process.env.IDENTITY_SUPPORTED == "true"
         };
     }
 
@@ -57,9 +59,14 @@ export class Config {
     public static resetInstance(): void {
         Config.instance = new Config();
     }
+
+    public getNodeEnv(): string {
+        return this.clientConfiguration.nodeEnv!;
+    }
+
     public getClientId(): string {
         return this.clientConfiguration.clientId!;
-      }
+    }
 
     public getPrivateKey(): string {
         return this.clientConfiguration.privateKey!;
@@ -120,9 +127,11 @@ export class Config {
     public getAuthenticationVtr(): string {
         return this.clientConfiguration.authenticationVtr!;
     }
+
     public getIdentityVtr(): string {
         return this.clientConfiguration.identityVtr!;
     }
+
     public getUiLocales(): string {
         return this.clientConfiguration.uiLocales!;
     }
@@ -145,5 +154,9 @@ export class Config {
 
     public getRequireJAR(): boolean {
         return this.clientConfiguration.requireJAR;
+    }
+
+    public getIdentitySupported(): boolean {
+        return this.clientConfiguration.identitySupported;
     }
 }
