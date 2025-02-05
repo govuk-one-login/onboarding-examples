@@ -93,6 +93,7 @@ const createApp = (): Application => {
       "home.njk", 
       { 
         authenticated: true,
+        identitySupported: clientConfig.getIdentitySupported(),
         // page config
         serviceName: "Example Service",  
         resultData: req.session.user,
