@@ -1,0 +1,32 @@
+{
+  "name": "argon2id",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Simple tool to create a client secret and argon2id hash",
+  "repository": {
+    "url": "github:govuk-one-login/onboarding-examples",
+    "directory": "tools/argon2id"
+  },
+  "bugs": {
+    "url": "https://github.com/govuk-one-login/onboarding-examples/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/server.js"
+    }
+  },
+  "scripts": {
+    "start:createKeys": "tsx src/app.ts createKeys",
+    "start:createSecret": "tsx src/app.ts createSecret"
+  },
+  "author": "GOV.UK One Login",
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "argon2": "^0.41.1"
+  }
+}
