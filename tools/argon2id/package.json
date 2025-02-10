@@ -1,0 +1,18 @@
+{
+  "name": "generate-argon2id",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate-argon2id.js",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "npx ts-node generate-argon2id.ts 'PLAINTEXT SECRET' 'THIS IS A SALT'",
+    "test2": "node generate-argon2id.js 'PLAINTEXT SECRET' 'THIS IS A SALT'"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "argon2": "^0.41.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2"
+  }
+}
