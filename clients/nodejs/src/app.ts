@@ -72,14 +72,18 @@ const createApp = (): Application => {
   );
 
   app.get("/signed-out", (req: Request, res: Response) => {
-    res.render("logged-out.njk");
+    res.render("logged-out.njk",
+      {
+        serviceName: "{EXAMPLE_SERVICE}"
+      }
+    );
   });
 
   app.get("/start", (req: Request, res: Response) => {
     res.render("start.njk", 
       {
         authenticated: isAuthenticated(req, res),
-        serviceName: "Example Service",
+        serviceName: "{EXAMPLE_SERVICE}",
         // GOV.UK header config
         homepageUrl: "https://gov.uk",
         serviceUrl: `${getServiceUrl()}`
@@ -93,7 +97,7 @@ const createApp = (): Application => {
       { 
         authenticated: true,
         // page config
-        serviceName: "Example Service",  
+        serviceName: "{EXAMPLE_SERVICE}",  
         resultData: req.session.user,
         // Service header config
         isProduction: getNodeEnv() == "development" ? false : true
