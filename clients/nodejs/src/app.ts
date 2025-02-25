@@ -3,7 +3,7 @@ import session from "express-session";
 import cookieParser from "cookie-parser";
 import path from "node:path";
 import { setupNunjucks } from "./utils/nunjucks.js";
-import { getNodeEnv, getServiceUrl } from "./utils/config.js"; 
+import { Config } from "./config.js";
 import { AuthenticatedUser, isAuthenticated } from "./utils/helpers.js";
 import { authorizeController } from "./components/authorize/authorize-controller.js";
 import { callbackController } from "./components/callback/callback-controller.js";
@@ -52,6 +52,7 @@ const createApp = (): Application => {
     saveUninitialized: true
   }));
 
+  const clientConfig = Config.getInstance();
 
   app.get("/oidc/login", (req: Request, res: Response, next: NextFunction) => 
     authorizeController(req, res, next, false)
@@ -72,17 +73,21 @@ const createApp = (): Application => {
   );
 
   app.get("/signed-out", (req: Request, res: Response) => {
-    res.render("logged-out.njk");
+    res.render("logged-out.njk",
+      {
+        serviceName: "{EXAMPLE_SERVICE}"
+      }
+    );
   });
 
   app.get("/start", (req: Request, res: Response) => {
     res.render("start.njk", 
       {
         authenticated: isAuthenticated(req, res),
-        serviceName: "Example Service",
+        serviceName: "{EXAMPLE_SERVICE}",
         // GOV.UK header config
         homepageUrl: "https://gov.uk",
-        serviceUrl: `${getServiceUrl()}`
+        serviceUrl: `${clientConfig.getServiceUrl()}`
       }
     );
   });
@@ -92,11 +97,12 @@ const createApp = (): Application => {
       "home.njk", 
       { 
         authenticated: true,
+        identitySupported: clientConfig.getIdentitySupported(),
         // page config
-        serviceName: "Example Service",  
+        serviceName: "{EXAMPLE_SERVICE}",  
         resultData: req.session.user,
         // Service header config
-        isProduction: getNodeEnv() == "development" ? false : true
+        isProduction: clientConfig.getNodeEnv() == "development" ? false : true
       });
   });
 

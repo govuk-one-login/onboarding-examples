@@ -23,7 +23,7 @@ export const callbackController = async (
         let state = req.cookies["state"];
 
         const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
-        const oidcConfig: openidClient.Configuration = clientConfig.getOpenidClientConfiguration();
+        //const oidcConfig: openidClient.Configuration = clientConfig.getOpenidClientConfiguration();
         let currentUrl: URL = new URL(fullUrl);
         let tokens = await openidClient.authorizationCodeGrant(
             clientConfig.getOpenidClientConfiguration(), 
@@ -117,7 +117,7 @@ export const callbackController = async (
             returnCode: returnCodeValue
         };
 
-        if (clientConfig.getImmediateRedirect() && coreIdentityPayload === undefined) {
+        if (clientConfig.getImmediateRedirect() && clientConfig.getIdentitySupported() && coreIdentityPayload === undefined) {
             res.redirect("/oidc/verify");
         } else {
             res.redirect("/home");

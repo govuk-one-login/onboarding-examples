@@ -6,15 +6,16 @@
   <div class="govuk-width-container ">
     <main class="govuk-main-wrapper">
 
-      <h1 class="govuk-heading-l">You are logged out of the Example Service</h1>
+      <h1 class="govuk-heading-l">You are logged out of {{ serviceName }}</h1>
 
       <p class="govuk-body">
         {{ message.text }}
       </p>
 
       {{ govukButton({
-        text: "Start the example service",
-        href: "/"
+        text: "Start " + serviceName ,
+        href: "/",
+        isStartButton: true
       }) }}
 
     </div>

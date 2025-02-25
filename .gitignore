@@ -715,6 +715,4 @@ clients/nodejs/.env
 clients/nodejs/.env
 clients/nodejs/.env.integration
 clients/nodejs/.env.cognito
-tools/crypto/CLIENT_SECRET_HASH.txt
 .gitignore
-tools/crypto/CLIENT_SECRET.txt
