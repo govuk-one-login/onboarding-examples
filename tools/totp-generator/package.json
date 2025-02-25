@@ -1,11 +1,11 @@
 {
-  "name": "totp",
-  "version": "0.1.0",
+  "name": "totp-generator",
+  "version": "1.0.0",
   "license": "MIT",
   "description": "generate a TOTP in typescript",
   "repository": {
     "url": "github:govuk-one-login/onboarding-examples",
-    "directory": "tools/totp"
+    "directory": "tools/totp-generator"
   },
   "bugs": {
     "url": "https://github.com/govuk-one-login/onboarding-examples/issues"

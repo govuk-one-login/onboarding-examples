@@ -6,7 +6,7 @@ A simple example that creates an API endpoint that generates a [TOTP](https://en
 
 ```bash
 npm install
-
+npm run build
 npm run start
 ```
 
