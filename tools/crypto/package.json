@@ -17,8 +17,7 @@
     }
   },
   "scripts": {
-    "start:createKeys": "tsx src/app.ts createKeys",
-    "start:createSecret": "tsx src/app.ts createSecret"
+    "start": "tsx src/app.ts"
   },
   "author": "GOV.UK One Login",
   "devDependencies": {
