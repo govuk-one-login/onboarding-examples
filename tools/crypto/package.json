@@ -1,11 +1,11 @@
 {
-  "name": "argon2id",
+  "name": "crypto",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "Simple tool to create a client secret and argon2id hash",
+  "description": "Simple tool to create keys and secrets",
   "repository": {
     "url": "github:govuk-one-login/onboarding-examples",
-    "directory": "tools/argon2id"
+    "directory": "tools/crypto"
   },
   "bugs": {
     "url": "https://github.com/govuk-one-login/onboarding-examples/issues"
