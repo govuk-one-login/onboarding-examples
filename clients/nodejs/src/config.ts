@@ -23,7 +23,7 @@ export class Config {
             clientId: process.env.OIDC_CLIENT_ID ?? "",
             privateKey: process.env.OIDC_PRIVATE_KEY ?? "",
             clientSecret: process.env.OIDC_CLIENT_SECRET ?? "",           
-            issuer: process.env.OIDC_ISSUER ?? "https://oidc.integration.account.gov.uk",
+            issuer: process.env.OIDC_ISSUER ?? "https://oidc.integration.account.gov.uk/",
             discoveryUrl: process.env.OIDC_ISSUER 
                 ? process.env.OIDC_ISSUER + "/.well-known/openid-configuration" 
                 : "https://oidc.integration.account.gov.uk/.well-known/openid-configuration",

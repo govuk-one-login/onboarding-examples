@@ -12,7 +12,8 @@
       {% if identitySupported %}
         {{ govukButton({
           text: "Make a request for authentication and identity",
-          href: "oidc/verify"
+          href: "oidc/verify",
+          isStartButton: true
         }) }}
       {% endif %}
 
