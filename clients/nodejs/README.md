@@ -29,7 +29,9 @@ cd onboarding-examples/clients/nodejs
 ```
 
 ## How to run the example and simulator
+
 Two ways to run the example and simulator locally:
+
 - Docker compose
 - Node.js using source source with the simulator running in Docker
 
@@ -40,7 +42,6 @@ This is the quickest method if you want to quickly see the data returned.
 ```bash
 docker compose up 
 ```
-
 
 ### Run the example from source with Node.js and the simulator in a Docker container
 
@@ -81,5 +82,5 @@ npm run dev:sim
 
 1. browse to [http://localhost:8080](http://localhost:8080)
 1. press the "Make a request for authentication" button and review the returned data
-1. press the "Make a request for authentication and identity" button to check identity and review the returned data 
+1. press the "Make a request for authentication and identity" button to check identity and review the returned data
 1. click the "Sign out" link in the service header
