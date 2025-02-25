@@ -714,3 +714,4 @@ clients/nodejs/.env
 .vscode/launch.json
 clients/nodejs/.env
 clients/nodejs/.env.integration
+clients/nodejs/.env.cognito

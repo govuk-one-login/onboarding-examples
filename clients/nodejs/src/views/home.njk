@@ -7,13 +7,15 @@
   <div class="govuk-width-container ">
     <main class="govuk-main-wrapper">
 
-      <h1 class="govuk-heading-l">You are logged in to {{ serviceName }}</h1>
-
-      {{ govukButton({
-        text: "Make a request for authentication and identity",
-        href: "oidc/verify",
-        isStartButton: true
-      }) }}
+      <h1 class="govuk-heading-l">You are logged in to the {{ serviceName }}</h1>
+      
+      {% if identitySupported %}
+        {{ govukButton({
+          text: "Make a request for authentication and identity",
+          href: "oidc/verify",
+          isStartButton: true
+        }) }}
+      {% endif %}
 
       <h2 class="govuk-heading-m">Access token</h2>
       <p class="govuk-body">
@@ -39,26 +41,28 @@
       </p>
       <pre><code>{{ resultData.userinfo | dump(2) }}</code></pre>
 
-      <h2 class="govuk-heading-m">Return codes</h2>
-      <p class="govuk-body">
-        Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/prove-users-identity/#understand-your-user-s-return-code-claim" class="govuk-link">return codes</a> in our technical documentation.
-      </p>
-      {% if resultData.returnCode %}
-      <pre>{{ resultData.returnCode | dump(2) }}</pre>
-      {% else %}
-      <p class="govuk-body-m">None</p>
-      {% endif %}
+      {% if identitySupported %}
+        <h2 class="govuk-heading-m">Return codes</h2>
+        <p class="govuk-body">
+          Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/prove-users-identity/#understand-your-user-s-return-code-claim" class="govuk-link">return codes</a> in our technical documentation.
+        </p>
 
-      <h2 class="govuk-heading-m">Core identity claims</h2>
-      <p class="govuk-body">
-        Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/prove-users-identity/#prove-your-user-39-s-identity" class="govuk-link">core identity claims</a> in our technical documentation.
-      </p>
-      {% if resultData.coreIdentity %}
-      <pre>{{ resultData.coreIdentity | dump(2) }}</pre>
-      {% else %}
-      <p class="govuk-body-m">None</p>
-      {% endif %}
+        {% if resultData.returnCode %}
+        <pre>{{ resultData.returnCode | dump(2) }}</pre>
+        {% else %}
+        <p class="govuk-body-m">None</p>
+        {% endif %}
 
+        <h2 class="govuk-heading-m">Core identity claims</h2>
+        <p class="govuk-body">
+          Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/prove-users-identity/#prove-your-user-39-s-identity" class="govuk-link">core identity claims</a> in our technical documentation.
+        </p>
+        {% if resultData.coreIdentity %}
+        <pre>{{ resultData.coreIdentity | dump(2) }}</pre>
+        {% else %}
+        <p class="govuk-body-m">None</p>
+        {% endif %}
+      {% endif %}
     </div>
   </main>
 </div>
