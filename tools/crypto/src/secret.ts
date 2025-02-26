@@ -35,10 +35,10 @@ async function hashSecret(
         // Configure hashing options with Argon2's Options type
         const hashingOptions: Options = {
             type: argon2.argon2id,
-            memoryCost: 65536,  // Memory usage in KiB (64 MB)
-            timeCost: 3,        // Number of iterations
-            parallelism: 4,     // Degree of parallelism
-            hashLength: 32     // Length of the hash output
+            memoryCost: 15360,  // Memory usage in KiB (64 MB)
+            timeCost: 2,        // Number of iterations
+            parallelism: 1,     // Degree of parallelism
+            hashLength: 16     // Length of the hash output
         };
 
         const hash = await argon2.hash(secret, hashingOptions);
