@@ -715,3 +715,4 @@ clients/nodejs/.env
 clients/nodejs/.env
 clients/nodejs/.env.integration
 clients/nodejs/.env.cognito
+.gitignore
