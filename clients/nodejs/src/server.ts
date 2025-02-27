@@ -1,7 +1,11 @@
 import { createApp } from "./app.js";
 import { logger } from "./logger.js";
+import * as dotenv from 'dotenv';
 
-const port = process.env.PORT || 8080;
+// Load the .env file
+dotenv.config();
+
+const port = process.env.NODE_PORT || 8080;
 
 (async () => {
   const app = createApp();

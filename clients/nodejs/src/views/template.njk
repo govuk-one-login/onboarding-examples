@@ -3,19 +3,13 @@
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 {% from "header/service-header.njk" import govukOneLoginServiceHeader %}
 
-{% block pageTitle %}GOV.UK One Login Sample{% endblock %}
+{% block pageTitle %}GOV.UK One Login Example{% endblock %}
 {% block head %}
   <!--[if !IE 8]><!-->
-  <link href="../../govuk-frontend-4.0.1.min.css" rel="stylesheet">
+  <link href="../../govuk-frontend.min.css" rel="stylesheet">
   <link href="../../account.css" rel="stylesheet">
   <link href="../../service-header.css" rel="stylesheet" >
   <!--<![endif]-->
-
-  {# For Internet Explorer 8, you need to compile specific stylesheet #}
-  {# see https://frontend.design-system.service.gov.uk/supporting-ie8/#support-internet-explorer-8 #}
-  <!--[if IE 8]>
-    <link href="/govuk-frontend-ie8-4.0.1.min.css" rel="stylesheet">
-  <![endif]-->
 
 {% endblock %}
 
@@ -23,9 +17,9 @@
 {% if authenticated %}
   {{ govukOneLoginServiceHeader ({ 
     serviceName: serviceName,
-    isProduction: isProduction,
-    navigationItems: navigationItems, 
-    logOutUrl: logOutUrl
+    oneLoginLink: oneLoginLink,
+    homepageLink: homepageLink,
+    signOutLink: signOutLink
   }) }}
 {% else %}
   {{ govukHeader ({
@@ -43,16 +37,15 @@
 
 {% block bodyEnd %}
   {# Run JavaScript at end of the <body>, to avoid blocking the initial render. #}
-  <script src="/govuk-frontend-4.0.1.min.js"></script>
-  <script src="/service-header.js"></script>
-  <script>
-    var oneLoginHeader = document.querySelector("[data-module='one-login-header']");
-    window
-      .GOVUKFrontend
-      .initAll();
-    window
-      .CrossServiceHeader(oneLoginHeader)
-      .init();
+  <script type="module" src="/govuk-frontend.min.js"></script>
+  <script type="module" src="/service-header.js"></script>
+  <script type="module">
+    import { initAll } from '/govuk-frontend.min.js'
+    initAll();
+  </script>
+  <script type="module">
+      import { initCrossServiceHeader } from '/service-header.js';
+      initCrossServiceHeader();
   </script>
 {% endblock %}
 

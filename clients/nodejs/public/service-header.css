@@ -38,7 +38,7 @@
   margin-right: -15px;
   margin-left: -15px;
 }
-.govuk-grid-row:after {
+.govuk-grid-row::after {
   content: "";
   display: block;
   clear: both;
@@ -182,15 +182,15 @@
   }
 }
 
+
 .cross-service-header__button {
   display: none;
   font-family: "GDS Transport", arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.25;
+  font-size: 1.1875rem;
+  line-height: 1.3157894737;
   position: relative;
   align-items: center;
   cursor: pointer;
@@ -198,15 +198,15 @@
   min-width: max-content;
   border: 0;
   margin: 0;
-  padding: 10px 0 10px 20px;
+  padding: 10px 0 5px 20px;
   background: none;
 }
-.cross-service-header.js-enabled .cross-service-header__button {
+.toggle-enabled .cross-service-header__button {
   display: inline;
   display: flex;
 }
 @media (min-width: 40.0625em) {
-  .cross-service-header.js-enabled .cross-service-header__button {
+  .toggle-enabled .cross-service-header__button {
     display: none;
   }
 }
@@ -228,13 +228,6 @@
 @media print {
   .cross-service-header__button {
     font-family: sans-serif;
-  }
-}
-@media (min-width: 40.0625em) {
-  .cross-service-header__button {
-    font-size: 19px;
-    font-size: 1.1875rem;
-    line-height: 1.3157894737;
   }
 }
 @media print {
@@ -345,9 +338,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 400;
-  font-size: 14px;
-  font-size: 0.875rem;
-  line-height: 1.1428571429;
+  font-size: 1.1875rem;
+  line-height: 1.3157894737;
   color: #ffffff;
   background: #0b0c0c;
   border-bottom: 10px solid #1d70b8;
@@ -358,17 +350,10 @@
     font-family: sans-serif;
   }
 }
-@media (min-width: 40.0625em) {
-  .one-login-header {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 1.25;
-  }
-}
 @media print {
   .one-login-header {
     font-size: 14pt;
-    line-height: 1.2;
+    line-height: 1.15;
   }
 }
 
@@ -432,7 +417,7 @@
 .one-login-header__nav__link:visited:hover {
   text-decoration: underline;
   text-decoration-thickness: 3px;
-  text-underline-offset: 0.1em;
+  text-underline-offset: 0.1578em;
 }
 .one-login-header__link:link:focus, .one-login-header__link:visited:focus,
 .one-login-header__nav__link:link:focus,
@@ -468,11 +453,9 @@
   vertical-align: top;
 }
 
-.one-login-header__logotype-crown-fallback-image {
-  width: 36px;
-  height: 32px;
-  border: 0;
-  vertical-align: bottom;
+.one-login-header__logotype-crown[width="32"] {
+  top: -3px;
+  margin-right: 2px;
 }
 
 .one-login-header__link--homepage {
@@ -513,14 +496,14 @@
 .one-login-header__nav {
   display: block;
 }
-.cross-service-header.js-enabled .one-login-header__nav {
+.toggle-enabled .one-login-header__nav {
   display: none;
 }
-.cross-service-header.js-enabled .one-login-header__nav.one-login-header__nav--open {
+.toggle-enabled .one-login-header__nav.one-login-header__nav--open {
   display: block;
 }
 @media (min-width: 40.0625em) {
-  .cross-service-header.js-enabled .one-login-header__nav {
+  .toggle-enabled .one-login-header__nav {
     display: block;
   }
 }
@@ -556,6 +539,7 @@
   .one-login-header__nav__list-item {
     padding: 10px 0 10px 30px;
     border-left: 1px solid #b1b4b6;
+    align-self: stretch;
   }
   .one-login-header__nav__list-item:not(:last-child) {
     margin-right: 20px;
@@ -599,6 +583,11 @@
 .service-header__container {
   padding-top: 5px;
 }
+@media (max-width: 40.0525em) {
+  .service-header__container {
+    margin-bottom: 5px;
+  }
+}
 @media (min-width: 40.0625em) {
   .service-header__container {
     display: flex;
@@ -611,9 +600,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.25;
+  font-size: 1.3125rem;
+  line-height: 1.1904761905;
   color: #0b0c0c;
   padding: 15px 0;
   margin: 0;
@@ -626,14 +614,13 @@
 }
 @media (min-width: 40.0625em) {
   .service-header__heading {
-    font-size: 19px;
-    font-size: 1.1875rem;
-    line-height: 1.3157894737;
+    font-size: 1.5rem;
+    line-height: 1.25;
   }
 }
 @media print {
   .service-header__heading {
-    font-size: 14pt;
+    font-size: 18pt;
     line-height: 1.15;
   }
 }
@@ -646,14 +633,14 @@
 .service-header__nav {
   display: block;
 }
-.cross-service-header.js-enabled .service-header__nav {
+.toggle-enabled .service-header__nav {
   display: none;
 }
-.cross-service-header.js-enabled .service-header__nav.service-header__nav--open {
+.toggle-enabled .service-header__nav.service-header__nav--open {
   display: block;
 }
 @media (min-width: 40.0625em) {
-  .cross-service-header.js-enabled .service-header__nav {
+  .toggle-enabled .service-header__nav {
     display: block;
   }
 }
@@ -668,9 +655,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-weight: 700;
-  font-size: 16px;
-  font-size: 1rem;
-  line-height: 1.25;
+  font-size: 1.1875rem;
+  line-height: 1.3157894737;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -678,13 +664,6 @@
 @media print {
   .service-header__nav-list {
     font-family: sans-serif;
-  }
-}
-@media (min-width: 40.0625em) {
-  .service-header__nav-list {
-    font-size: 19px;
-    font-size: 1.1875rem;
-    line-height: 1.3157894737;
   }
 }
 @media print {
@@ -699,9 +678,8 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-weight: 700;
-    font-size: 14px;
-    font-size: 0.875rem;
-    line-height: 1.1428571429;
+    font-size: 1.1875rem;
+    line-height: 1.3157894737;
   }
 }
 @media print and (min-width: 40.0625em) {
@@ -709,22 +687,15 @@
     font-family: sans-serif;
   }
 }
-@media (min-width: 40.0625em) and (min-width: 40.0625em) {
-  .service-header__nav-list {
-    font-size: 16px;
-    font-size: 1rem;
-    line-height: 1.25;
-  }
-}
 @media print and (min-width: 40.0625em) {
   .service-header__nav-list {
     font-size: 14pt;
-    line-height: 1.2;
+    line-height: 1.15;
   }
 }
 
 .service-header__nav-list-item {
-  margin: 10px 0 20px;
+  margin: 15px 0 20px;
 }
 .service-header__nav-list-item.service-header__nav-list-item--active {
   padding-left: 15px;
@@ -752,7 +723,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-decoration: underline;
   text-decoration-thickness: max(1px, .0625rem);
-  text-underline-offset: 0.1em;
+  text-underline-offset: 0.1578em;
 }
 @media print {
   .service-header__nav-list-item-link {
