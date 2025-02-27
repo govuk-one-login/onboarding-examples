@@ -137,7 +137,7 @@ export class Config {
     }
 
     public getServiceUrl(): string {
-        return this.clientConfiguration.uiLocales!;
+        return this.clientConfiguration.serviceUrl!;
     }
 
     public getOpenidClientConfiguration(): openidClient.Configuration {
