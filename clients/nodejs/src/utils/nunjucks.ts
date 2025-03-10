@@ -9,6 +9,6 @@ export function setupNunjucks(app: Application, viewsPath: string): void {
     // Don't cache so we can make changes to templates without restarting the server
     noCache: true,
   };
-  const viewPaths = [viewsPath, "node_modules/govuk-frontend/"];
+  const viewPaths = [viewsPath, "node_modules/govuk-frontend/dist/"];
   nunjucks.configure(viewPaths, configureOptions);
 }
