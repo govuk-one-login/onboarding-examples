@@ -1,9 +1,6 @@
 import ClientConfiguration from "./types/client-configuration.js";
 import { UserIdentityClaim } from "./types/user-info.js";
 import * as openidClient from "openid-client";
-import dotenv from "dotenv";
-import { dirname, join } from "path";
-import { fileURLToPath } from "url";
 import DIDKeySet from "./types/did-keyset.js";
 
 export class Config {
@@ -12,11 +9,6 @@ export class Config {
     private clientConfiguration: ClientConfiguration;
     
     private constructor() {
-        
-        const __filename = fileURLToPath(import.meta.url);
-        const __dirname = dirname(__filename);
-        // Load the .env file
-        dotenv.config();
         
         this.clientConfiguration = {
             nodeEnv: process.env.NODE_ENV || "development",
@@ -106,11 +98,21 @@ export class Config {
     }
 
     public getAuthorizeRedirectUrl(): string {
-        return this.clientConfiguration.authorizeRedirectUrl!;
+        let authorizeRedirectUrl = this.clientConfiguration.authorizeRedirectUrl;
+        if (authorizeRedirectUrl.includes(":port")) {
+            return authorizeRedirectUrl.replace("port", process.env.NODE_PORT || "8080");
+        } else {
+            return authorizeRedirectUrl;
+        }
     }
 
     public getPostLogoutRedirectUrl(): string {
-        return this.clientConfiguration.postLogoutRedirectUrl!;
+        let postLogoutRedirectUrl = this.clientConfiguration.postLogoutRedirectUrl;
+        if (postLogoutRedirectUrl.includes(":port")) {
+            return postLogoutRedirectUrl.replace("port", process.env.NODE_PORT || "8080");
+        } else {
+            return postLogoutRedirectUrl;
+        }
     }
 
     public getClaims(): UserIdentityClaim[] {
@@ -138,7 +140,12 @@ export class Config {
     }
 
     public getServiceUrl(): string {
-        return this.clientConfiguration.uiLocales!;
+        let serviceUrl = this.clientConfiguration.serviceUrl;
+        if (serviceUrl.includes(":port")) {
+            return serviceUrl.replace("port", process.env.NODE_PORT || "8080");
+        } else {
+            return serviceUrl;
+        }
     }
 
     public getOpenidClientConfiguration(): openidClient.Configuration {

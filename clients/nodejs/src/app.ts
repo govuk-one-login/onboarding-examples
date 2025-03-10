@@ -102,11 +102,14 @@ const createApp = (): Application => {
         authenticated: true,
         identitySupported: clientConfig.getIdentitySupported(),
         // page config
-        serviceName: "{EXAMPLE_SERVICE}",  
+        serviceName: "{EXAMPLE_SERVICE}",
         resultData: req.session.user,
         // Service header config
-        isProduction: clientConfig.getNodeEnv() == "development" ? false : true
-      });
+        oneLoginLink: clientConfig.getNodeEnv() == "development" ? "https://home.integration.account.gov.uk/" : "https://home.account.gov.uk/",
+        homepageLink: "https://www.gov.uk/",
+        signOutLink: "http://localhost:8080/oidc/logout"
+      }
+    );
   });
 
   app.get("/email", (req: Request, res: Response) => {
