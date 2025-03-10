@@ -45,7 +45,8 @@ export class Config {
             serviceUrl: process.env.SERVICE_URL ?? "",
             immediateRedirect: process.env.IMMEDIATE_REDIRECT == "true",
             requireJAR: process.env.REQUIRE_JAR == "true",
-            identitySupported: process.env.IDENTITY_SUPPORTED == "true"
+            identitySupported: process.env.IDENTITY_SUPPORTED == "true",
+            f2fLandingPageUrl: process.env.F2F_LANDING_PAGE_URL ?? ""
         };
     }
 
@@ -158,5 +159,9 @@ export class Config {
 
     public getIdentitySupported(): boolean {
         return this.clientConfiguration.identitySupported;
+    }
+
+    public getF2FLandingPageUrl(): string {
+        return this.clientConfiguration.f2fLandingPageUrl;
     }
 }

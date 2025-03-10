@@ -26,4 +26,5 @@ export default interface ClientConfiguration {
   immediateRedirect: boolean;
   requireJAR: boolean;
   identitySupported: boolean;
+  f2fLandingPageUrl: string;
 }

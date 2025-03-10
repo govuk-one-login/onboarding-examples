@@ -10,6 +10,8 @@ import { callbackController } from "./components/callback/callback-controller.js
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 import { logoutController } from "./components/logout/logout-controller.js";
+import { ParamsDictionary } from "express-serve-static-core";
+import { ParsedQs } from "qs";
 
 declare module 'express-session' {
   interface SessionData {
@@ -65,7 +67,8 @@ const createApp = (): Application => {
   app.get("/oidc/authorization-code/callback", callbackController);
   
   app.get("/", (req: Request, res: Response) => {
-    res.redirect("/start");
+    let redirectUrl = clientConfig.getF2FLandingPageUrl() ? "/email" : "/home";
+    res.redirect(redirectUrl);
   });
 
   app.get("/oidc/logout", (req: Request, res: Response, next: NextFunction) => 
@@ -104,6 +107,10 @@ const createApp = (): Application => {
         // Service header config
         isProduction: clientConfig.getNodeEnv() == "development" ? false : true
       });
+  });
+
+  app.get("/email", (req: Request, res: Response) => {
+    res.render("email.njk");
   });
 
   // Generic error handler
