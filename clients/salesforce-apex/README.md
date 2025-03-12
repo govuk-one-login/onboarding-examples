@@ -23,7 +23,7 @@
 
 ## Before you start
 
-You must [register a client on GOV.UK One Login](https://docs.sign-in.service.gov.uk/before-integrating/set-up-your-service-s-configuration/#register-your-service-to-use-gov-uk-one-login). You can [use the admin tool](https://admin.sign-in.service.gov.uk/register/enter-email-address) to create a client to test with in our integration environment. Registering to use this service requires a gov.uk email address.
+You must [register a client on GOV.UK One Login](https://docs.sign-in.service.gov.uk/before-integrating/register-and-manage-your-service/). You can [use the admin tool](https://admin.sign-in.service.gov.uk/register/enter-email-address) to create a client to test with in our integration environment. Registering to use this service requires a gov.uk email address.
 
 You must have access to a Salesforce [developer account](https://developer.salesforce.com/) to configure and use the code example.
 
