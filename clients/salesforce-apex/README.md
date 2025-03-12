@@ -32,7 +32,7 @@ You must have access to a Salesforce [developer account](https://developer.sales
 ### 1. Create the required Apex Classes
 
 - navigate to PLATFORM TOOLS - Custom Code - Apex Classes in the Salesforce developer console
-- browse to the [Apex-SalesForce](https://raw.githubusercontent.com/govuk-one-login/rp-reference/main/clients/Apex-SalesForce/) example source code
+- browse to the [salesforce-apex](https://github.com/govuk-one-login/onboarding-examples/tree/main/clients/salesforce-apex) example source code
 - for each class do the following:
   - select the New button in the developer console to add an Apex class and paste in the source code from GitHub, select the Save button
 
