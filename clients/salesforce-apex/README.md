@@ -12,7 +12,7 @@
 
 - optionally supports identity verification requests
 - the sample is hard coded to request the `https://vocab.account.gov.uk/v1/coreIdentityJWT`, `https://vocab.account.gov.uk/v1/address` and `https://vocab.account.gov.uk/v1/returnCode` claims see [Choose which claims your service can request](https://docs.sign-in.service.gov.uk/before-integrating/choose-which-user-attributes-your-service-can-request/#choose-which-claims-your-service-can-request)
-- uses the `private_key_jwt` token authentication method with a RSA private key, see [Generate a key pair](https://docs.sign-in.service.gov.uk/before-integrating/generate-a-key/)
+- uses the `private_key_jwt` token authentication method with a RSA private key, see [Generate a key pair](https://docs.sign-in.service.gov.uk/before-integrating/set-up-your-public-and-private-keys/#create-a-key-pair)
 - makes a request to the [`/authorize`](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#make-a-request-to-the-authorize-endpoint) endpoint to authenticate your user and get an authorisation code
 - makes a request to the [`/token`](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#make-a-token-request) endpoint to retrieve id and access tokens
 - makes a request to the [`/userinfo`](https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/authenticate-your-user/#retrieve-user-information) endpoint using the access token to retrieve the user attributes as claims
