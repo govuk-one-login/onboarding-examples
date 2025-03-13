@@ -29,7 +29,6 @@ export class Config {
             claims: process.env.OIDC_CLAIMS
                 ? (process.env.OIDC_CLAIMS.split(",") as UserIdentityClaim[])
                 : ["https://vocab.account.gov.uk/v1/coreIdentityJWT"],
-            idTokenSigningAlgorithm: process.env.OIDC_ID_TOKEN_SIGNING_ALG ?? "ES256",
             tokenAuthMethod: process.env.OIDC_TOKEN_AUTH_METHOD ?? "private_key_jwt",
             authenticationVtr: process.env.AUTH_VECTOR_OF_TRUST ?? "Cl.Cm",
             identityVtr: process.env.IDENTITY_VECTOR_OF_TRUST ?? "Cl.Cm.P2",
@@ -37,8 +36,7 @@ export class Config {
             serviceUrl: process.env.SERVICE_URL ?? "",
             immediateRedirect: process.env.IMMEDIATE_REDIRECT == "true",
             requireJAR: process.env.REQUIRE_JAR == "true",
-            identitySupported: process.env.IDENTITY_SUPPORTED == "true",
-            f2fLandingPageUrl: process.env.F2F_LANDING_PAGE_URL ?? ""
+            identitySupported: process.env.IDENTITY_SUPPORTED == "true"
         };
     }
 
@@ -119,10 +117,6 @@ export class Config {
         return this.clientConfiguration.claims!;
     }
 
-    public getIdTokenSigningAlgorithm(): string {
-        return this.clientConfiguration.idTokenSigningAlgorithm!;
-    }
-
     public getTokenAuthMethod(): string {
         return this.clientConfiguration.tokenAuthMethod!;
     }
@@ -166,9 +160,5 @@ export class Config {
 
     public getIdentitySupported(): boolean {
         return this.clientConfiguration.identitySupported;
-    }
-
-    public getF2FLandingPageUrl(): string {
-        return this.clientConfiguration.f2fLandingPageUrl;
     }
 }
