@@ -29,7 +29,6 @@ export class Config {
             claims: process.env.OIDC_CLAIMS
                 ? (process.env.OIDC_CLAIMS.split(",") as UserIdentityClaim[])
                 : ["https://vocab.account.gov.uk/v1/coreIdentityJWT"],
-            idTokenSigningAlgorithm: process.env.OIDC_ID_TOKEN_SIGNING_ALG ?? "ES256",
             tokenAuthMethod: process.env.OIDC_TOKEN_AUTH_METHOD ?? "private_key_jwt",
             authenticationVtr: process.env.AUTH_VECTOR_OF_TRUST ?? "Cl.Cm",
             identityVtr: process.env.IDENTITY_VECTOR_OF_TRUST ?? "Cl.Cm.P2",
@@ -116,10 +115,6 @@ export class Config {
 
     public getClaims(): UserIdentityClaim[] {
         return this.clientConfiguration.claims!;
-    }
-
-    public getIdTokenSigningAlgorithm(): string {
-        return this.clientConfiguration.idTokenSigningAlgorithm!;
     }
 
     public getTokenAuthMethod(): string {

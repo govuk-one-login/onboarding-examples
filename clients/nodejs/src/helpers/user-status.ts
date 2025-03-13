@@ -5,7 +5,7 @@ export function AuthenticatedUser(req: Request, res: Response, next: NextFunctio
     next();
   }
   else {
-    res.redirect("/oauth/login");
+    res.redirect("/oidc/login");
   }
 }
 
@@ -23,7 +23,7 @@ export function VerifiedUser(req: Request, res: Response, next: NextFunction) {
     next();
   }
   else {
-    res.redirect("/oauth/verify");
+    res.redirect("/oidc/verify");
   }
 }
 

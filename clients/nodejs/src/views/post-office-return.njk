@@ -1,0 +1,28 @@
+{% extends "template.njk" %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block content %}
+  <div class="govuk-width-container ">
+    <main class="govuk-main-wrapper">
+
+      <h1 class="govuk-heading-l">Welcome back to {{ serviceName }}</h1>
+
+      <p class="govuk-body">
+        It looks like you may have returned from a "Face to face" identity check. We now need to request the results from GOV.UK One Login.
+      </p>
+      <p class="govuk-body">
+        Learn more about <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/create-a-landing-page/" class="govuk-link">how to create a landing page</a> in our technical documentation.
+      </p>
+
+      {{ govukButton({
+        text: "Request identity check result",
+        href: "/oidc/verify",
+        isStartButton: true
+      }) }}
+
+    </div>
+  </main>
+</div>
+{% endblock %}

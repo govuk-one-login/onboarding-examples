@@ -16,7 +16,6 @@ export default interface ClientConfiguration {
   authorizeRedirectUrl?: string;
   postLogoutRedirectUrl?: string;
   claims: UserIdentityClaim[];
-  idTokenSigningAlgorithm: string;
   tokenAuthMethod: string;
   authenticationVtr: string;
   identityVtr: string;
