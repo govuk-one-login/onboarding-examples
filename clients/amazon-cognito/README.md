@@ -16,15 +16,12 @@
   - `nonce` parameter used to mitigate authorization code injection attacks
   - custom parameters such as `vtr` used to change default [authentication level](https://docs.sign-in.service.gov.uk/before-integrating/choose-the-level-of-authentication/#choose-the-level-of-authentication-for-your-service)
 
-To use Amazon Cognito with GOV.UK One Login, you'll need to contact GOV.UK One Login support to enable the following options. You cannot enable these using the [GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk).
-
-1. `client_secret_post` token authentication
-1. `permit_missing_nonce` option enabled
+You'll need to contact GOV.UK One Login support to enable the options required for Amazon Cognito to work with GOV.UK One Login. You cannot enable these using the [GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk).
 
 ## Before you start
 
 1. You must [register a client on GOV.UK One Login](https://docs.sign-in.service.gov.uk/before-integrating/set-up-your-service-s-configuration/#register-your-service-to-use-gov-uk-one-login). You can [use the GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk/register/enter-email-address) to create a client to test with in our integration environment. Registering to use this service requires a government email address.
-1. [Contact GOV.UK One Login support](https://docs.sign-in.service.gov.uk/support/) to enable `client_secret_post` token authentication and `permit_missing_nonce`.
+1. [Contact GOV.UK One Login support](https://docs.sign-in.service.gov.uk/support/) to enable Amazon Cognito support.
 1. Create a [client secret and hash](https://docs.sign-in.service.gov.uk/before-integrating/integrating-third-party-platform/#set-up-client-secret-using-client-secret-post)
 
 ## Configuring Amazon Cognito
