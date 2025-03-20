@@ -84,7 +84,7 @@ sequenceDiagram
 1. User is redirected to F2F test tool
 1. User is redirected to the RP's F2F landing page
 1. User is redirected to GOV.UK One Login to authenticate
-1. the user does not need to sign because they have an existing GOV.UK One Login session
+1. User does not need to sign because they have an existing GOV.UK One Login session
 1. User is redirected to RP's redirect URL
 1. RP requests userinfo data: `email`, `phone` and `sub`
 1. RP shows user the Post Office return screen
