@@ -8,7 +8,7 @@ This tool can be used to test the implementation of your "landing page". There i
 
 flowchart LR
     A[Email] --> B[F2F test tool]
-    B --> | 1 authenticate | C[One Login]
+    B --> | 1 authenticate | C[GOV.UK One Login Integration]
     C --> | 2 callback | B
     B <--> | 3 token request | C
     B --> | 4 redirect | D[RP F2F Landing Page]
@@ -24,11 +24,15 @@ flowchart LR
 
 ### 1. Configuration
 
-Most of the configuration is the same as a the example application (see the Quickstart ["Run the example service using the GOV.UK One Login integration environment"](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-using-the-gov-uk-one-login-integration-environment)).
+Most of the configuration is the same as a the example application (see the Quickstart ["Run the example service using the GOV.UK One Login integration environment"](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-using-the-gov-uk-one-login-integration-environment)). Follow the instructions to configure the example with the integration environment to run that example relying party locally on port `8080`. This example hosts an example landing page at http://localhost:8080/landing-page.
 
-Configure `F2F_LANDING_PAGE_URL` to the URL you want the user redirected to after clicking the link in the post office return email and successfully authenticating.
+In the `f2f-test` directory configure the `.env` file as follows:
+- duplicate the example configuration with `cp .env.example .env`
+- set `OIDC_CLIENT_ID` to the client ID
+- set `OIDC_PRIVATE_KEY` to the private key (without headers and linefeeds, all on one line)
+- set `F2F_LANDING_PAGE_URL` to `http://localhost:8080/landing-page`, the URL you want the user redirected to after clicking the link in the post office return email and successfully authenticating.
 
-### 2. 1 Start with Typescript
+### 2.1 Start the F2F tool with Typescript
 
 ```bash
 npm install
@@ -36,7 +40,7 @@ npm run build
 npm run start
 ```
 
-### 2.2 Start with Docker Compose
+### 2.2 Start the F2F tool with Docker Compose
 
 `docker compose up --build`
 
@@ -44,9 +48,9 @@ npm run start
 
 Once the example is running, assuming you are running on the default port and localhost make a request as shown below:
 
-`http://localhost:8080`
+`http://localhost:8083`
 
-You will be redirected to an example email to start the test process. Click on the link in the email.
+You will be redirected to an example email to start the test process. Click on the link in the email and you will be lead through the process.
 
 
 
