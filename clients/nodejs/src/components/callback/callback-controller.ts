@@ -117,8 +117,13 @@ export const callbackController = async (
             returnCode: returnCodeValue
         };
 
+        const postOffice: boolean = req.cookies["post-office"];
+
         if (clientConfig.getImmediateRedirect() && clientConfig.getIdentitySupported() && coreIdentityPayload === undefined) {
             res.redirect("/oidc/verify");
+        // Need a way of determining if the user came via email and landing-page e.g. store in session
+        } else if(postOffice) {            
+            res.redirect("/post-office-return");
         } else {
             res.redirect("/home");
         }

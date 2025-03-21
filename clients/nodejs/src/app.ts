@@ -2,9 +2,9 @@ import express, { Application, Express, NextFunction, Request, Response } from "
 import session from "express-session";
 import cookieParser from "cookie-parser";
 import path from "node:path";
-import { setupNunjucks } from "./utils/nunjucks.js";
+import { setupNunjucks } from "./helpers/nunjucks.js";
 import { Config } from "./config.js";
-import { AuthenticatedUser, isAuthenticated } from "./utils/helpers.js";
+import { AuthenticatedUser, isAuthenticated } from "./helpers/user-status.js";
 import { authorizeController } from "./components/authorize/authorize-controller.js";
 import { callbackController } from "./components/callback/callback-controller.js";
 import { fileURLToPath } from 'url';
@@ -15,6 +15,8 @@ declare module 'express-session' {
   interface SessionData {
     user: any,
     identity: any;
+    landingPage?: boolean;
+    email?: boolean;
   }
 };
 
@@ -62,7 +64,9 @@ const createApp = (): Application => {
     authorizeController(req, res, next, true)
   );
 
-  app.get("/oidc/authorization-code/callback", callbackController);
+  app.get("/oidc/authorization-code/callback", (req: Request, res: Response, next: NextFunction) => 
+    callbackController(req, res, next)
+);
   
   app.get("/", (req: Request, res: Response) => {
     res.redirect("/start");
@@ -71,6 +75,34 @@ const createApp = (): Application => {
   app.get("/oidc/logout", (req: Request, res: Response, next: NextFunction) => 
     logoutController(req, res, next)
   );
+
+  app.get("/landing-page", (req: Request, res: Response, next: NextFunction) => {
+    // set flag to say user came via post office landing page
+    res.cookie("post-office", true, {
+      httpOnly: true,
+    });
+    authorizeController(req, res, next, false)
+  });
+
+  app.get("/post-office-return", AuthenticatedUser,(req: Request, res: Response) => {
+    res.cookie("post-office","", {
+      maxAge: 0,
+      httpOnly: true
+    });
+
+    res.render(
+      "post-office-return.njk", 
+      { 
+        authenticated: true,
+        // page config
+        serviceName: "{EXAMPLE_SERVICE}",
+        // Service header config
+        oneLoginLink: clientConfig.getNodeEnv() == "development" ? "https://home.integration.account.gov.uk/" : "https://home.account.gov.uk/",
+        homepageLink: "https://www.gov.uk/",
+        signOutLink: "http://localhost:8080/oidc/logout"
+      }
+    );
+  });
 
   app.get("/signed-out", (req: Request, res: Response) => {
     res.render("logged-out.njk",
