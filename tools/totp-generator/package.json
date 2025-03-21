@@ -1,0 +1,35 @@
+{
+  "name": "totp-generator",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "generate a TOTP in typescript",
+  "repository": {
+    "url": "github:govuk-one-login/onboarding-examples",
+    "directory": "tools/totp-generator"
+  },
+  "bugs": {
+    "url": "https://github.com/govuk-one-login/onboarding-examples/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/server.js"
+    }
+  },
+  "scripts": {
+    "build": "npx pkgroll",
+    "dev": "tsx watch --clear-screen=false src/server.ts",
+    "start": "node dist/server.js"    
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "hi-base32": "^0.5.1",
+    "pino": "^9.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "dotenv": "^16.4.5",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  }
+}
