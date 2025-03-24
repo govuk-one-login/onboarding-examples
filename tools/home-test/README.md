@@ -7,12 +7,14 @@ This tool can be used to test the implementation of your service's "loged in sta
 ```mermaid
 
 flowchart LR
-    A[Email] --> B[F2F test tool]
-    B --> | 1 authenticate | C[GOV.UK One Login Integration]
-    B --> | 2 redirect | D[RP F2F Landing page URL]
-    D --> | 3 authenticate | C
-    D --> | 4 redirect | E[ RP Post office return]
-    E --> | 5 identity verification | C
+    H[Home page test tool]
+    O[GOV.UK One Login Integration]
+    L[RP logged in state page]
+    H --> | 1 authenticate | O
+    O --> | 2 redirect | H
+    H --> | 3 User clicks link | L
+    L --> | 4 authenticate | O
+    O --> | 5 redirect | L
 
 ```
 
