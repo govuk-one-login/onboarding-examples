@@ -24,7 +24,8 @@ Most of the configuration is the same as the example application (see the Quicks
 
 In the `f2f-test` directory configure the `.env` file as follows:
 
-- duplicate the example configuration with `cp .env.example .env`
+- duplicate the example configuration e.g. `cp .env.example .env` or `copy .env.example .env`
+- create a new client using the [GOV.UK One Login Admin Tool](https://admin.sign-in.service.gov.uk/)
 - set `OIDC_CLIENT_ID` to the client ID
 - set `OIDC_PRIVATE_KEY` to the private key (without headers and linefeeds, all on one line)
 - set `F2F_LANDING_PAGE_URL` to `http://localhost:8080/landing-page`, the URL you want the user redirected to after clicking the link in the post office return email and successfully authenticating.
