@@ -85,4 +85,4 @@ sequenceDiagram
 1. User does not need to sign because they have an existing GOV.UK One Login session
 1. User is redirected to RP's redirect URL
 1. RP requests userinfo data: `email`, `phone` and `sub`
-1. RP shows user logeed in state page
+1. RP shows user logged in state page
