@@ -2,7 +2,7 @@
 
 A simple relying party implementation that simulates the GOV.UK One Login Home service card link.  
 
-This tool can be used to test the implementation of your service's "loged in state page".
+This tool can be used to test the implementation of your service's "logged in state page".
 
 ```mermaid
 
