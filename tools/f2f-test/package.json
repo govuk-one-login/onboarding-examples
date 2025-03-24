@@ -1,11 +1,11 @@
 {
-  "name": "node-js-typescript-express-sample",
+  "name": "node-js-typescript-f2f-test",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "Example GOV.UK One Login Relying Party in Typescript",
+  "description": "F2F test tool in Typescript",
   "repository": {
     "url": "github:govuk-one-login/rp-reference",
-    "directory": "clients/nodejs"
+    "directory": "tools/f2f-test"
   },
   "bugs": {
     "url": "https://github.com/govuk-one-login/rp-reference/issues"
