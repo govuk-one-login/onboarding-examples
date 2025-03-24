@@ -1,11 +1,11 @@
 {
-  "name": "node-js-typescript-express-sample",
+  "name": "node-js-typescript-home-test",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "Example GOV.UK One Login Relying Party in Typescript",
+  "description": "Home test tool in Typescript",
   "repository": {
     "url": "github:govuk-one-login/rp-reference",
-    "directory": "clients/nodejs"
+    "directory": "tools/home-test"
   },
   "bugs": {
     "url": "https://github.com/govuk-one-login/rp-reference/issues"
@@ -40,7 +40,7 @@
     "@types/express-session": "^1.17.7",
     "@types/nunjucks": "^3.2.4",
     "cookie-parser": "^1.4.7",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "express-session": "^1.18.1",
     "govuk-frontend": "^5.9.0",
     "jose": "^5.9.3",

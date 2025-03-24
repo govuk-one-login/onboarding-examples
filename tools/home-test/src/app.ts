@@ -39,16 +39,7 @@ const createApp = (): Application => {
   
   app.get("/", (req: Request, res: Response) => {
     // Send user to fake email as default page
-    res.redirect("/email");
-  });
-
-  app.get("/email", (req: Request, res: Response) => {
-    res.render(
-      "email.njk",
-      {
-        loginLink: `${clientConfig.getServiceUrl()}/oidc/login`
-      }
-    );
+    res.redirect("/home");
   });
 
   app.get("/home", (req: Request, res: Response, next: NextFunction) => {
@@ -69,12 +60,11 @@ const createApp = (): Application => {
     res.render(
       "your-services.njk",
       {
-        accountServiceLink: `${clientConfig.getRpAccountServiceUrl()}`,
-        accountServiceLinkText: `${clientConfig.getRpAccountServiceUrlText()}`,
-        accountServiceName: `${clientConfig.getRpAccountServiceName()}`,
-        accountServiceDescription: `${clientConfig.getRpAccountServiceDescription()}`,
-        serviceLink: `${clientConfig.getServiceUrl()}`,
-        serviceLinkText: `${clientConfig.getRpServiceUrlText()}`
+        rpAccountServiceLink: `${clientConfig.getRpAccountServiceUrl()}`,
+        rpAccountServiceLinkText: `${clientConfig.getRpAccountServiceUrlText()}`,
+        rpAccountServiceName: `${clientConfig.getRpAccountServiceName()}`,
+        rpAccountServiceDescription: `${clientConfig.getRpAccountServiceDescription()}`,
+        serviceLink: `${clientConfig.getServiceUrl()}`
       }
     );
   });

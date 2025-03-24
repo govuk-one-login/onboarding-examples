@@ -19,11 +19,9 @@ export class Config {
             f2fLandingPageUrl: process.env.F2F_LANDING_PAGE_URL ?? "",
             serviceUrl: process.env.SERVICE_URL ?? "",
             rpAccountServiceUrl: process.env.RP_ACCOUNT_SERVICE_URL ?? "",
-            rpAccountServiceUrlText: process.env.RP_ACCOUNT_SERVICE_URLTEXT ?? "",
+            rpAccountServiceUrlText: process.env.RP_ACCOUNT_SERVICE_URL_TEXT ?? "",
             rpAccountServiceName: process.env.RP_ACCOUNT_SERVICE_NAME ?? "",
-            rpAccountServiceDescription: process.env.RP_ACCOUNT_SERVICE_DESCRIPTION ?? "",
-            rpServiceUrl: process.env.RP_SERVICE_URL ?? "",
-            rpServiceUrlText: process.env.RP_SERVICE_URL_TEXT ?? ""
+            rpAccountServiceDescription: process.env.RP_ACCOUNT_SERVICE_DESCRIPTION ?? ""
         };
     }
 
@@ -98,13 +96,5 @@ export class Config {
 
     public getRpAccountServiceDescription(): string {
         return this.clientConfiguration.rpAccountServiceDescription!;
-    }
-
-    public getRpServiceUrl(): string {
-        return this.clientConfiguration.rpServiceUrl!;
-    }
-
-    public getRpServiceUrlText(): string {
-        return this.clientConfiguration.rpServiceUrlText!;
     }
 }

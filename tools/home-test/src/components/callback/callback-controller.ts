@@ -36,7 +36,7 @@ export const callbackController = async (
             httpOnly: true,
         });
 
-        res.redirect(clientConfig.getF2FLandingPageUrl());
+        res.redirect("/your-services");
     
     } catch (error) {
         next(error);

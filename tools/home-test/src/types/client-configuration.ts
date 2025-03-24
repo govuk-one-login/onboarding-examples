@@ -13,6 +13,4 @@ export default interface ClientConfiguration {
   rpAccountServiceUrlText?: string;
   rpAccountServiceName?: string;
   rpAccountServiceDescription?: string;
-  rpServiceUrl?: string;
-  rpServiceUrlText?: string;
 }

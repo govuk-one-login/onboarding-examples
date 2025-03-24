@@ -1,11 +1,11 @@
 services:
   f2f-test:
-    container_name: f2f-test
-    image: f2f-test:latest
+    container_name: home-test
+    image: home-test:latest
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8083:8083"
+      - "8084:8084"
     restart: on-failure
     network_mode: host
