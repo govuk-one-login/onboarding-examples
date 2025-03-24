@@ -26,7 +26,7 @@ Most of the configuration is the same as a the example application (see the Quic
 
 In the `home-test` directory configure the `.env` file as follows:
 
-- duplicate the example configuration with `cp .env.example .env`
+- duplicate the example configuration e.g. `cp .env.example .env` or `copy .env.example .env`
 - set `OIDC_CLIENT_ID` to the client ID
 - set `OIDC_PRIVATE_KEY` to the private key (without headers and linefeeds, all on one line)
 - set `RP_ACCOUNT_SERVICE_NAME` to the name of the service you are testing
