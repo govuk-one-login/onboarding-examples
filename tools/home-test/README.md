@@ -67,11 +67,12 @@ sequenceDiagram
     O->>O: 2. User authenticates
     O->>H: 3. redirect to redirect_uri
     H->>H: 4. redirect to simulated Home page
-    H->>O: 5. /authorize (vtr=Cl.Cm)
-    O->>O: 6. User has existing One Login session
-    O->>R: 7. redirect to redirect_uri
-    R->>O: 8. /userinfo - sub, email, phone    
-    R->>R: 9. Show RP logged in state page
+    H->>R: 5. redirect to RP logged in state page
+    R->>O: 6. /authorize (vtr=Cl.Cm)
+    O->>O: 7. User has existing One Login session
+    O->>R: 8. redirect to redirect_uri
+    R->>O: 9. /userinfo - sub, email, phone    
+    R->>R: 10. Show RP logged in state page
 
 ```
 
