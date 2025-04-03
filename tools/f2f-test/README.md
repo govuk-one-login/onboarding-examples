@@ -20,10 +20,12 @@ flowchart LR
 
 ### 1. Configuration
 
-Most of the configuration is the same as the example application (see the Quickstart ["Run the example service using the GOV.UK One Login integration environment"](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-using-the-gov-uk-one-login-integration-environment)). Follow the instructions to configure the example with the integration environment to run that example relying party locally on port `8080`. This example hosts an example landing page at http://localhost:8080/landing-page.
+Most of the configuration is the same as the example application (see the Quickstart ["Run the example service using the GOV.UK One Login integration environment"](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-using-the-gov-uk-one-login-integration-environment)). Follow the instructions to configure the example with the integration environment to run that example relying party locally on port `8080`. This example hosts an example landing page at <http://localhost:8080/landing-page>.
 
 In the `f2f-test` directory configure the `.env` file as follows:
-- duplicate the example configuration with `cp .env.example .env`
+
+- duplicate the example configuration e.g. `cp .env.example .env` or `copy .env.example .env`
+- create a new client using the [GOV.UK One Login Admin Tool](https://admin.sign-in.service.gov.uk/)
 - set `OIDC_CLIENT_ID` to the client ID
 - set `OIDC_PRIVATE_KEY` to the private key (without headers and linefeeds, all on one line)
 - set `F2F_LANDING_PAGE_URL` to `http://localhost:8080/landing-page`, the URL you want the user redirected to after clicking the link in the post office return email and successfully authenticating.
@@ -48,11 +50,7 @@ Once the example is running, assuming you are running on the default port and lo
 
 You will be redirected to an example email to start the test process. Click on the link in the email and you will be lead through the process.
 
-
-
 ## How it works
-
-
 
 ```mermaid
 
