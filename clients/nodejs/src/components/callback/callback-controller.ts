@@ -19,8 +19,9 @@ export const callbackController = async (
 
         const clientConfig = Config.getInstance();
         
-        let nonce = req.cookies["nonce"];
-        let state = req.cookies["state"];
+        const nonce = req.cookies["nonce"];
+        const state = req.cookies["state"];
+        const pkceCodeVerifier = req.cookies["code_verifier"];
 
         const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
         //const oidcConfig: openidClient.Configuration = clientConfig.getOpenidClientConfiguration();
@@ -32,6 +33,7 @@ export const callbackController = async (
                 expectedNonce: nonce,
                 expectedState: state,
                 idTokenExpected: true,
+                pkceCodeVerifier: pkceCodeVerifier,
             }
         )
 

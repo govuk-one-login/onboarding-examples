@@ -26,9 +26,9 @@ export const authorizeController = async (
         }
 
         let openidClientConfiguration : openidClient.Configuration = await getDiscoveryMetadata(clientConfig, privateKey, clientSecret)
-        const parameters = getAuthorizeParameters(clientConfig, res, verificationRequired);
+        const parameters = await getAuthorizeParameters(clientConfig, res, verificationRequired);
         let redirectTo: URL;
-        
+  
         if (clientConfig.getRequireJAR()) {
             const issuer: string = clientConfig.getIssuer()
             let substituteAudience: openidClient.ModifyAssertionOptions = {
