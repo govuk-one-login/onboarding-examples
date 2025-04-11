@@ -58,23 +58,25 @@ You will be redirected to an example email to start the test process. Click on t
 
 sequenceDiagram
     participant E as Email
-    participant F as F2F test tool    
+    participant F as F2F test tool /<br> F2F return RP
     participant R as Relying Party
     participant O as GOV.UK One Login
-    E->>F: 1. Login request
-    F->>O: 2. /authorize (vtr=Cl.Cm)
+    E->>F: 1. User clicks link in email <br> ?id=xyz
+    F->>O: 2. Redirect to /authorize (vtr=Cl.Cm)
     O->>O: 3. User authenticates
-    O->>F: 4. redirect to redirect_uri
-    F->>R: 5. redirect to F2F landing page
-    R->>O: 6. /authorize  (vtr=Cl.Cm)
-    O->>O: 7. User has existing One Login session
-    O->>R: 8. redirect to redirect_uri
-    R->>O: 9. /userinfo - sub, email, phone
-    R->>R: 10. Show Post office return screen
-    R->>O: 11. /authorize  (vtr=Cl.Cm.P2)
-    O->>O: 12. Retrieve existing identity
-    O->>R: 13. redirect to redirect_uri
-    R->>O: 14. /userinfo - coreIdentityJWT, address
+    O->>F: 4. Redirect to F2F redirect_uri
+    F->>R: 5. Redirect to F2F landing page
+    R->>R: 6. Store flag that user is on F2F return journey 
+    R->>O: 7. Redirect to /authorize  (vtr=Cl.Cm)
+    O->>O: 8. User has existing One Login session
+    O->>R: 9. Redirect to RP redirect_uri
+    R->>O: 10. Request /userinfo - sub, email, phone
+    Note left of R: No UI is shown until here
+    R->>R: 11. Show Post office return screen    
+    R->>O: 11. Redirect to /authorize  (vtr=Cl.Cm.P2)
+    O->>O: 12. Reuse existing identity<br>(identity reuse screen is shown)
+    O->>R: 13. Redirect to RP redirect_uri
+    R->>O: 14. Request /userinfo - coreIdentityJWT, address
 
 ```
 
