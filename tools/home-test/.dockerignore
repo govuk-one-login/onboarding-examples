@@ -1,0 +1,9 @@
+.dockerignore
+.git
+.github
+.gitignore
+.husky
+dist
+node_modules
+LICENCE
+README.md

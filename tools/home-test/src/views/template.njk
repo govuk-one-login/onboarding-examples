@@ -1,0 +1,59 @@
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% block pageTitle %}GOV.UK One Login Example{% endblock %}
+{% block head %}
+  <!--[if !IE 8]><!-->
+  <link href="../../govuk-frontend.min.css" rel="stylesheet">
+  <link href="../../account.css" rel="stylesheet">
+  <link href="../../service-header.css" rel="stylesheet" >
+  <!--<![endif]-->
+{% endblock %}
+
+{% block header %}
+  {{ govukHeader ({
+    serviceName: serviceName,
+    homepageUrl: homepageUrl,
+    serviceUrl: serviceUrl
+  }) }} 
+{% endblock %}
+
+{% block content %}
+  <pre>Default Template</pre>
+{% endblock %}
+
+{% block bodyEnd %}
+  {# Run JavaScript at end of the <body>, to avoid blocking the initial render. #}
+  <script type="module" src="/govuk-frontend.min.js"></script>
+  <script type="module">
+    import { initAll } from '/govuk-frontend.min.js'
+    initAll();
+  </script>
+{% endblock %}
+
+{% block footer %}
+  {{ govukFooter({
+  meta: {
+    items: [
+      {
+        href: "https://github.com/govuk-one-login/onboarding-examples/issues/new?body=Problem+with%27onboarding-examples+Typescript+example%27+%28https%3A%2F%2Fgithub.com/govuk-one-login/onboarding/clients/nodejs%2F%29&labels=bug&title=Re%3A+%27onboarding-examples/client/nodejs%27",
+        text: "Report problem"
+      },
+      {
+        href: "https://github.com/govuk-one-login/onboarding-examples/tree/main/clients/nodejs",
+        text: "GitHub Repo"
+      },
+      {
+        href: "https://github.com/govuk-one-login/simulator",
+        text: "Simulator Repo"
+      },
+      {
+        href: "https://docs.sign-in.service.gov.uk/how-gov-uk-one-login-works/",
+        text: "Tech docs"
+      }
+  
+    ]
+  }
+}) }}
+{% endblock %}
