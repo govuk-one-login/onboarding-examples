@@ -1,6 +1,6 @@
 # Generate a key pair or client secret and hash
 
-A simple example that [creates a key pair](https://docs.sign-in.service.gov.uk/before-integrating/set-up-your-public-and-private-keys/#create-a-key-pair) using Node.js crypto functionality in TypeScript
+A simple example that [creates a key pair](https://docs.sign-in.service.gov.uk/before-integrating/set-up-your-public-and-private-keys/#create-a-key-pair) and a [client secret and client secret hash](https://docs.sign-in.service.gov.uk/before-integrating/integrating-third-party-platform/#generate-the-client-secret-and-the-salt-using-openssl) using Node.js crypto functionality in TypeScript.
 
 ## Usage
 
