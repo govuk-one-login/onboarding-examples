@@ -2,10 +2,10 @@ import * as openidClient from "openid-client";
 import { Response } from "express";
 import { Config } from "../config.js";
 
-export const getAuthorizeParameters = (
+export const getAuthorizeParameters = async (
     clientConfig : Config,
     res: Response,
-    idvRequired: boolean): Record<string, string> => {
+    idvRequired: boolean): Promise<Record<string, string>> => {
 
     // Store the nonce and state in a session cookie so it can be checked in callback
     const generatedNonce = openidClient.randomNonce();
@@ -17,6 +17,15 @@ export const getAuthorizeParameters = (
     res.cookie("state", generatedState, {
         httpOnly: true,
     });
+
+    // Generate the code verifier and code challenge for PKCE
+    const codeVerifier = openidClient.randomPKCECodeVerifier();
+    const codeChallenge = await openidClient.calculatePKCECodeChallenge(codeVerifier);
+    res.cookie("code_verifier", codeVerifier, {
+        httpOnly: true,
+    });
+
+    
 
     let vtr: string;
     if (idvRequired) {
@@ -30,7 +39,9 @@ export const getAuthorizeParameters = (
         scope: clientConfig.getScopes().join(" "),
         vtr: vtr,
         nonce: generatedNonce,
-        state: generatedState
+        state: generatedState,
+        code_challenge: codeChallenge,
+        code_challenge_method: "S256"
     }
 
     if (idvRequired) {
