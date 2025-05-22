@@ -14,7 +14,7 @@ Once the example is running, assuming you are running on the default port and lo
 
 ```bash
 
-http://localhost:8081/totp-generator?secret=Y3BUOUHH4CB7JQNQGYRSTUC5PAHYRJAJ
+http://localhost:8082/totp-generator?secret=Y3BUOUHH4CB7JQNQGYRSTUC5PAHYRJAJ
 
 ```
 

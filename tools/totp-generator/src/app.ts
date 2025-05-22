@@ -16,10 +16,14 @@ const createApp = (): Application => {
 
   app.get('/', (req: Request, res: Response) => {
     res.send(`
+      <html>
+      <body>
       <h1>Time based one time password (TOTP) generator </h1>
       <p>Generate a one time password by making a GET request to: <code>/totp-generator?secret=your-secret-key</code></p>
       <p>Example: <a href="./totp-generator?secret=Y3BUOUHH4CB7JQNQGYRSTUC5PAHYRJAJ">./totp-generator?secret=Y3BUOUHH4CB7JQNQGYRSTUC5PAHYRJAJ</a></p>
       <p><strong>Note:</strong> Always use HTTPS in production to protect the secret and TOTP value</p>
+      </body>
+      </html>
     `);
   });
 

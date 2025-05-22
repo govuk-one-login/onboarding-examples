@@ -11,6 +11,6 @@ const port = process.env.NODE_PORT || 8080;
   const app = createApp();
 
   app.listen(port, () => {
-    logger.info(`[server]: Server is running at http://localhost:${port}`);
+    logger.info(`sub-generator is running at http://localhost:${port}`);
   });
 })();

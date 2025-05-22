@@ -12,7 +12,7 @@ export const subController = async (
     const PAIRWISE_PREFIX = "urn:fdc:gov.uk:2022:";
     const subjectID: string = req.query.id;
     const sectorHost: string = req.query.sector;
-    const salt = Buffer.from(randomBytes(32).toString());
+    const salt = Buffer.from('77-9ahFw77-9IXjvv70b77-9Lh3Qlybvv71YGjZs77-9KO-_ve-_ve-_ve-_vUnvv73vv714Ae-_vQ');
     const pairwiseIdentifier = calculatePairwiseIdentifier(PAIRWISE_PREFIX, subjectID, sectorHost, salt);
     
     res.contentType('text/plain').send(pairwiseIdentifier);
