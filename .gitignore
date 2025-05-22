@@ -715,3 +715,5 @@ clients/nodejs/.env
 clients/nodejs/.env
 clients/nodejs/.env.integration
 clients/nodejs/.env.cognito
+tools/crypto/client_secret_hash.txt
+tools/crypto/client_secret.txt

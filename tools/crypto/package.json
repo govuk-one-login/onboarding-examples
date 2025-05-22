@@ -1,0 +1,31 @@
+{
+  "name": "crypto",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Simple tool to create keys and secrets",
+  "repository": {
+    "url": "github:govuk-one-login/onboarding-examples",
+    "directory": "tools/crypto"
+  },
+  "bugs": {
+    "url": "https://github.com/govuk-one-login/onboarding-examples/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/server.js"
+    }
+  },
+  "scripts": {
+    "start": "tsx src/app.ts"
+  },
+  "author": "GOV.UK One Login",
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "argon2": "^0.41.1"
+  }
+}
