@@ -38,7 +38,7 @@ const createApp = (): Application => {
   app.get("/oidc/authorization-code/callback", callbackController);
   
   app.get("/", (req: Request, res: Response) => {
-    // Send user to fake email as default page
+    // Send user to fake home page by default
     res.redirect("/home");
   });
 

@@ -2,13 +2,13 @@
   "name": "node-js-typescript-home-test",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "Home test tool in Typescript",
+  "description": "Home page test tool implemented in Typescript",
   "repository": {
-    "url": "github:govuk-one-login/rp-reference",
+    "url": "github:govuk-one-login/onboarding-examples",
     "directory": "tools/home-test"
   },
   "bugs": {
-    "url": "https://github.com/govuk-one-login/rp-reference/issues"
+    "url": "https://github.com/govuk-one-login/onboarding-examples/issues"
   },
   "type": "module",
   "exports": {
