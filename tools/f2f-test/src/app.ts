@@ -15,7 +15,7 @@ const createApp = (): Application => {
   const __dirname = dirname(__filename);
 
   // Configure Nunjucks view engine
-  const nunjucksPath = path.join(__dirname, "./views");
+  const nunjucksPath = path.join(__dirname, "../src/views");
   setupNunjucks(app, nunjucksPath);
 
   // Configure serving static assets like images and css

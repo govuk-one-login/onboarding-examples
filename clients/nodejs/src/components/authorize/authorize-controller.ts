@@ -10,7 +10,8 @@ export const authorizeController = async (
     req: Request, 
     res: Response, 
     next: NextFunction,
-    verificationRequired: boolean
+    verificationRequired: boolean,
+    reauthoriseRequired: boolean
 ): Promise<void> => {
     
     try {
@@ -25,8 +26,10 @@ export const authorizeController = async (
             clientSecret = clientConfig.getClientSecret();
         }
 
+        const idtoken = req.cookies["id-token"];
+
         let openidClientConfiguration : openidClient.Configuration = await getDiscoveryMetadata(clientConfig, privateKey, clientSecret)
-        const parameters = await getAuthorizeParameters(clientConfig, res, verificationRequired);
+        const parameters = await getAuthorizeParameters(clientConfig, res, verificationRequired, reauthoriseRequired, idtoken);
         let redirectTo: URL;
   
         if (clientConfig.getRequireJAR()) {

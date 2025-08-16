@@ -9,6 +9,24 @@
 
       <h1 class="govuk-heading-l">You are logged in to the {{ serviceName }}</h1>
       
+      {% if requireJAR %}
+        {{ govukButton({
+          text: "Make a request to Re-authenticate",
+          href: "oidc/reauthorise",
+          isStartButton: true
+        }) }}
+      {% else %}
+        {{ govukButton({
+          text: "Make a request to Re-authenticate",
+          disabled : true
+        }) }}
+        <p class="govuk-body">
+          Jar token authentication required for <a target="tech-docs" href="https://docs.sign-in.service.gov.uk/integrate-with-integration-environment/managing-your-users-sessions/#re-authenticating-your-users" class="govuk-link">re-authenticaton</a>.
+        </p>
+      {% endif %}
+
+      <br/>
+
       {% if identitySupported %}
         {{ govukButton({
           text: "Make a request for authentication and identity",

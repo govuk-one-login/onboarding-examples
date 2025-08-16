@@ -57,11 +57,15 @@ const createApp = (): Application => {
   const clientConfig = Config.getInstance();
 
   app.get("/oidc/login", (req: Request, res: Response, next: NextFunction) => 
-    authorizeController(req, res, next, false)
+    authorizeController(req, res, next, false, false)
+  );
+
+  app.get("/oidc/reauthorise", (req: Request, res: Response, next: NextFunction) => 
+    authorizeController(req, res, next, false, true)
   );
 
   app.get("/oidc/verify", (req: Request, res: Response, next: NextFunction) => 
-    authorizeController(req, res, next, true)
+    authorizeController(req, res, next, true, false)
   );
 
   app.get("/oidc/authorization-code/callback", (req: Request, res: Response, next: NextFunction) => 
@@ -130,6 +134,7 @@ const createApp = (): Application => {
       { 
         authenticated: true,
         identitySupported: clientConfig.getIdentitySupported(),
+        requireJAR: clientConfig.getRequireJAR(),
         // page config
         serviceName: "{EXAMPLE_SERVICE}",
         resultData: req.session.user,

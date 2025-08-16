@@ -5,7 +5,9 @@ import { Config } from "../config.js";
 export const getAuthorizeParameters = async (
     clientConfig : Config,
     res: Response,
-    idvRequired: boolean): Promise<Record<string, string>> => {
+    idvRequired: boolean,
+    reauthenticateRequired: boolean,
+    idToken: string): Promise<Record<string, string>> => {
 
     // Store the nonce and state in a session cookie so it can be checked in callback
     const generatedNonce = openidClient.randomNonce();
@@ -54,6 +56,11 @@ export const getAuthorizeParameters = async (
         };
 
         parameters["claims"] = JSON.stringify(result);
+    }
+
+    if (reauthenticateRequired) {
+        parameters["prompt"] = "login";
+        parameters["id_token_hint"] = idToken;
     }
 
     return parameters;
