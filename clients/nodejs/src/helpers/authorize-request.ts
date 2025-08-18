@@ -58,6 +58,8 @@ export const getAuthorizeParameters = async (
         parameters["claims"] = JSON.stringify(result);
     }
 
+    // If reauthentication has been requested, specific prompt=login and provide a 
+    // previously retrieved id toke fo the user
     if (reauthenticateRequired) {
         parameters["prompt"] = "login";
         parameters["id_token_hint"] = idToken;
