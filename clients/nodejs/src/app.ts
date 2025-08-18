@@ -85,7 +85,7 @@ const createApp = (): Application => {
     res.cookie("post-office", true, {
       httpOnly: true,
     });
-    authorizeController(req, res, next, false)
+    authorizeController(req, res, next, false, false)
   });
 
   app.get("/post-office-return", AuthenticatedUser,(req: Request, res: Response) => {
