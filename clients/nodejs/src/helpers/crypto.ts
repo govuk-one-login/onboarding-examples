@@ -82,7 +82,7 @@ export const fetchPublicKeys = async (
     let didResolutionResult: DIDResolutionResult;
     let didDocument: DIDDocument;
 
-    if (did.includes("localhost")) {
+    if (did.includes("localhost") || did.includes("simulator")) {
       // bit of a hack to get the DID document from http://localhost
       // didResolver refuses to connect to localhost and http endpoints
       const response = await fetch(issuer + ".well-known/did.json"); // local endpoint
@@ -92,7 +92,7 @@ export const fetchPublicKeys = async (
       didDocument = await response.json();
       //return { didDocument, didResolutionMetadata: {}, didDocumentMetadata: {} };
     } else {
-      didResolutionResult = await didResolver.resolve("did:web:identity.integration.account.gov.uk");
+      didResolutionResult = await didResolver.resolve(did);
     }
 
     // Extract public keys from assertionMethod methods

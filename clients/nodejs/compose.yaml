@@ -1,6 +1,6 @@
 services:
   example-nodejs:
-    image: ghcr.io/govuk-one-login/onboarding-examples-nodejs:latest
+    build: .
     ports:
       - "8080:8080"
     environment:
@@ -10,6 +10,7 @@ services:
       - OIDC_AUTHORIZE_REDIRECT_URL=http://localhost:8080/oidc/authorization-code/callback
       - OIDC_POST_LOGOUT_REDIRECT_URL=http://localhost:8080/signed-out
       - SERVICE_URL=http://localhost:8080
+
     depends_on:
       - simulator
       
