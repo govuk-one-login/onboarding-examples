@@ -92,8 +92,7 @@ export const fetchPublicKeys = async (
       didDocument = await response.json();
       //return { didDocument, didResolutionMetadata: {}, didDocumentMetadata: {} };
     } else {
-      didResolutionResult = await didResolver.resolve(did);
-    }
+didResolutionResult = await didResolver.resolve("did:web:identity.integration.account.gov.uk");    }
 
     // Extract public keys from assertionMethod methods
     // Fetch returns a different structure to the did resolver
