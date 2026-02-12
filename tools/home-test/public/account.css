@@ -1,0 +1,148 @@
+pre {
+    background: #f9f9f8;
+    padding: 15px;
+    overflow: auto;
+    position: relative;
+    border: 1px solid #bfc1c3;
+  }
+  
+.account-navigation {
+    background-color: #f3f2f1;
+    border-bottom: 1px solid #b1b4b6;
+    position: relative
+}
+
+.account-navigation__list {
+    font-family: "GDS Transport", arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 1.25;
+    color: #0b0c0c;
+    list-style-type: none;
+    padding: 0;
+    margin: 0
+}
+
+@media print {
+    .account-navigation__list {
+        font-family: sans-serif
+    }
+}
+
+@media(min-width: 40.0625em) {
+    .account-navigation__list {
+        font-size: 19px;
+        font-size: 1.1875rem;
+        line-height: 1.3157894737
+    }
+}
+
+@media print {
+    .account-navigation__list {
+        font-size: 14pt;
+        line-height: 1.15
+    }
+}
+
+@media print {
+    .account-navigation__list {
+        color: #000
+    }
+}
+
+.account-navigation__list-item {
+    display: inline-block;
+    margin: 0 20px 0 0
+}
+
+@media(min-width: 40.0625em) {
+    .account-navigation__list-item {
+        margin: 0 30px 0 0
+    }
+}
+
+.account-navigation__link {
+    display: inline-block;
+    font-weight: bold;
+    padding: 13px 0 15px;
+    margin-top: 2px
+}
+
+.account-navigation__link:not(:hover) {
+    text-decoration: none
+}
+
+.account-navigation__link:visited {
+    color: #1d70b8
+}
+
+.account-navigation__link:visited:hover {
+    color: #003078
+}
+
+.account-navigation__link:visited:focus {
+    color: #0b0c0c
+}
+
+.account-navigation__list-item--active .account-navigation__link {
+    padding: 13px 0 10px;
+    border-bottom: 5px solid #1d70b8
+}
+
+.account-navigation__list-item--active .account-navigation__link:focus {
+    border-bottom: none;
+    padding: 13px 0 15px
+}
+
+.account-navigation__list-item--active .account-navigation__link:hover {
+    border-color: #003078
+}
+
+.your-services__heading {
+    margin-bottom: 15px
+}
+
+.your-services__signed-in-status {
+    margin-bottom: 30px
+}
+
+.your-services__card {
+    border: 1px solid #b1b4b6
+}
+
+.govuk-list>.your-services__card {
+    margin-bottom: 20px
+}
+
+.your-services__card.your-services__card--empty {
+    margin-bottom: 30px
+}
+
+.your-services__card__heading {
+    padding: 15px 15px 20px 15px;
+    background-color: #f3f2f1;
+    margin: 0
+}
+
+.your-services__card__content {
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+@media(min-width: 40.0625em) {
+    .your-services__card__content {
+        padding-top: 20px
+    }
+}
+
+.your-services__card__last-used {
+    color: #505a5f
+}
+
+.your-services__list {
+    margin-bottom: 40px
+}
