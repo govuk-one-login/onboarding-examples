@@ -41,7 +41,7 @@
     "@types/nunjucks": "^3.2.4",
     "cookie-parser": "^1.4.7",
     "express": "^4.21.1",
-    "express-session": "^1.18.1",
+    "express-session": "^1.19.0",
     "jose": "^5.9.3",
     "nunjucks": "^3.2.4",
     "openid-client": "^6.1.7",
