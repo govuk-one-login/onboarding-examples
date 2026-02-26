@@ -40,7 +40,7 @@
     "@types/express-session": "^1.17.7",
     "@types/nunjucks": "^3.2.4",
     "cookie-parser": "^1.4.7",
-    "express": "^4.21.1",
+    "express": "^4.22.1",
     "express-session": "^1.18.1",
     "jose": "^5.9.3",
     "nunjucks": "^3.2.4",
