@@ -4,7 +4,7 @@
   "license": "MIT",
   "description": "Example GOV.UK One Login Relying Party in Typescript",
   "repository": {
-    "url": "github:govuk-one-login/rp-reference",
+    "url": "github:govuk-one-login/onboarding-examples",
     "directory": "clients/nodejs"
   },
   "bugs": {
