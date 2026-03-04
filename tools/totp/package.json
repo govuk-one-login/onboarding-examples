@@ -1,7 +1,15 @@
 {
   "name": "totp",
   "version": "0.1.0",
+  "engines": {
+    "node": ">=22.11.0",
+    "npm": ">=10.9.0"
+  },
   "description": "generate a TOTP in typescript",
+  "repository": {
+    "url": "github:https://github.com/govuk-one-login/onboarding-examples",
+    "directory": "tools/totp"
+  },
   "main": "./totp.ts",
   "dependencies": {
     "hi-base32": "^0.5.1"

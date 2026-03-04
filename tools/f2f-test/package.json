@@ -1,14 +1,18 @@
 {
   "name": "node-js-typescript-express-sample",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=22.11.0",
+    "npm": ">=10.9.0"
+  },
   "license": "MIT",
-  "description": "Example GOV.UK One Login Relying Party in Typescript",
+  "description": "Example GOV.UK One Login Relying Party in Typescript for testing the face to face journey",
   "repository": {
-    "url": "github:govuk-one-login/rp-reference",
-    "directory": "clients/nodejs"
+    "url": "github:govuk-one-login/onboarding-examples",
+    "directory": "tools/f2-ftest"
   },
   "bugs": {
-    "url": "https://github.com/govuk-one-login/rp-reference/issues"
+    "url": "https://github.com/govuk-one-login/onboarding-examples/issues"
   },
   "type": "module",
   "exports": {

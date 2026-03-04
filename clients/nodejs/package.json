@@ -1,14 +1,18 @@
 {
   "name": "node-js-typescript-express-sample",
   "version": "1.0.0",
+  "engines": {
+    "node": ">=22.11.0",
+    "npm": ">=10.9.0"
+  },
   "license": "MIT",
   "description": "Example GOV.UK One Login Relying Party in Typescript",
   "repository": {
-    "url": "github:govuk-one-login/rp-reference",
+    "url": "github:govuk-one-login/onboarding-examples",
     "directory": "clients/nodejs"
   },
   "bugs": {
-    "url": "https://github.com/govuk-one-login/rp-reference/issues"
+    "url": "https://github.com/govuk-one-login/onboarding-examples/issues"
   },
   "type": "module",
   "exports": {
@@ -24,6 +28,8 @@
     "generatekeys": "test -a private_key.pem || (openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048 && openssl rsa -pubout -in private_key.pem -out public_key.pem)",
     "simulator:config": "curl -s localhost:3000/config | jq -S .",
     "simulator:config:client": "curl -s localhost:3000/config | jq -S .clientConfiguration",
+    "simulator:discovery": "curl -s localhost:3000/.well-known/openid-configuration  | jq -S .",
+    "simulator:jwks": "curl -s $(curl -s localhost:3000/.well-known/openid-configuration  | jq -S | jq -r  .jwks_uri) | jq . -S",
     "simulator:restart": "npm run simulator:stop && npm run simulator:start",
     "simulator:shell": "curl -s localhost:3000 > /dev/null && docker exec -ti $(docker ps -q -f name=simulator) bash",
     "simulator:start": "curl -s localhost:3000 > /dev/null || docker run --rm -d -p 3000:3000 --name simulator ghcr.io/govuk-one-login/simulator:latest",
