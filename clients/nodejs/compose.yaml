@@ -1,13 +1,22 @@
 services:
   example-nodejs:
-    image: ghcr.io/govuk-one-login/onboarding-examples-nodejs:latest
+    build: .
     ports:
       - "8080:8080"
+    environment:
+      - OIDC_ISSUER=http://simulator:3000/
+      - IV_DID_URI=did:web:simulator%3A3000
+      - IV_ISSUER=http://simulator:3000/
+      - OIDC_AUTHORIZE_REDIRECT_URL=http://localhost:8080/oidc/authorization-code/callback
+      - OIDC_POST_LOGOUT_REDIRECT_URL=http://localhost:8080/signed-out
+      - SERVICE_URL=http://localhost:8080
+
     depends_on:
       - simulator
-    network_mode: host
+      
   simulator:
     image: ghcr.io/govuk-one-login/simulator:latest
     ports:
       - "3000:3000"
-    network_mode: host
+    environment:
+      - SIMULATOR_URL=http://simulator:3000

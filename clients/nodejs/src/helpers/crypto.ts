@@ -82,7 +82,7 @@ export const fetchPublicKeys = async (
     let didResolutionResult: DIDResolutionResult;
     let didDocument: DIDDocument;
 
-    if (did.includes("localhost")) {
+    if (did.includes("localhost") || did.includes("simulator")) {
       // bit of a hack to get the DID document from http://localhost
       // didResolver refuses to connect to localhost and http endpoints
       const response = await fetch(issuer + ".well-known/did.json"); // local endpoint
