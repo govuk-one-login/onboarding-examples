@@ -14,12 +14,17 @@ The example demonstrates:
 - logout request
 - use of JWT Authorisation Request (JAR)
 
-Works with the:
+A quick start on how to get started is available [here](https://docs.sign-in.service.gov.uk/quick-start/) 
+
+You have two choices for testing your service:
+- Configure and test against `GOV.UK One Login integration environment`
+- Configure and test against `GOV.UK One Login Simulator`
+
 
 |Environment|Description|
 |-----------|-----------|
-|[GOV.UK One Login Simulator](https://github.com/govuk-one-login/simulator)| A development and testing tool that simulates GOV.UK One Login. It is preconfigured to allow authentication and identity journeys by default and may be configured to suit your testing needs.|
-|[GOV.UK One Login integration environment](https://docs.sign-in.service.gov.uk/before-integrating/register-and-manage-your-service/)| A non-production environment for use when developing and testing an integration with GOV.UK One Login. Use the [GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk/register/enter-email-address) to create a client configuration then configure the Client ID and Public Key in the  `.env.integration` configuration file.|
+|GOV.UK One Login integration environment| A non-production environment for use when developing and testing an integration with GOV.UK One Login. Use the [GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk/register/enter-email-address) to create a client configuration then configure the Client ID, Public Key, etc in the  `.env.integration` configuration file.|
+|GOV.UK One Login Simulator| A development and testing tool that simulates GOV.UK One Login. It is preconfigured to allow authentication and identity journeys by default and may be configured to suit your testing needs. The source code for simulator is available [here](https://github.com/govuk-one-login/simulator) |
 
 ## Get the example source code
 
@@ -28,59 +33,47 @@ git clone https://github.com/govuk-one-login/onboarding-examples
 cd onboarding-examples/clients/nodejs
 ```
 
-## How to run the example and simulator
+## How to run the example using GOV.UK One Login Simulator
 
-Two ways to run the example and simulator locally:
+Tech docs on how to run and test using simulator are available [here](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-with-the-gov-uk-one-login-simulator-using-docker-compose)
 
-- Docker compose
-- Node.js using source source with the simulator running in Docker
+## How to run the example using GOV.UK One Login integration environment
 
-### Run the example and simulator in containers using Docker compose
+Tech docs on how to run and test using simulator are available [here](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-using-the-gov-uk-one-login-integration-environment)
 
-This is the quickest method if you want to quickly see the data returned.
+> You can configure and test you service against . You will need the Client ID for production configuration against **GOV.UK One Login integration environment**
 
-```bash
-docker compose up 
-```
 
-### Run the example from source with Node.js and the simulator in a Docker container
+## Utlity helpers
+There are some helper scripts you can use
 
-This is the best method if you want to run the example in Node.js and inspect the source code in your IDE.
-
-#### 1. Start the simulator
-
-Run the simulator locally
+#### 2. Generate Keys
+Generating local keys
 
 ```bash
-npm run simulator:start 
+npm run generatekeys
 ```
 
-Check the simulator is started on port 3000
+If you want see the contents of the generated key , you can read with a text editor of your choice or use these utilities
 
 ```bash
-npm run simulator:config
+npm run  showPrivateKey
+npm run  showPublicKey
 ```
 
-#### 2. Build the example
+## Toubleshooting tips
 
-Resolve dependencies and build the app
+### Key not working
 
-```bash
-nvm install 22.11.0 && nvm use 22.11.0
-npm ci && npm run build
-```
+Correct key settings in .env.integration file
+> Ensure the `OIDC_PRIVATE_KEY` value is in quotes and strip **-----BEGIN PRIVATE KEY-----** and **-----END PRIVATE KEY-----**
 
-#### 3. Run the example
+> Double check the `Client ID` and the configuration matches the local .env.integration config and in **GOV.UK One Login integration environment**
 
-Start the example
+## Pre-paring for production
 
-```bash
-npm run dev:sim
-```
+Production config is seperate from  *GOV.UK One Login integration environment*
 
-## How to test the example
+You will need the `Client ID` you have tested the integration against. 
 
-1. browse to [http://localhost:8080](http://localhost:8080)
-1. press the "Make a request for authentication" button and review the returned data
-1. press the "Make a request for authentication and identity" button to check identity and review the returned data
-1. click the "Sign out" link in the service header
+Further docs configuring for production are available [here](https://docs.sign-in.service.gov.uk/configure-for-production/) 
