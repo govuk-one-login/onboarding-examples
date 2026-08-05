@@ -35,13 +35,11 @@ cd onboarding-examples/clients/nodejs
 
 ## How to run the example using GOV.UK One Login Simulator
 
-Tech docs on how to run and test using simulator are available [here](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-with-the-gov-uk-one-login-simulator-using-docker-compose)
+Docs on how to run and test using `GOV.UK One Login Simulator` are available [here](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-with-the-gov-uk-one-login-simulator-using-docker-compose) and [here](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-using-the-gov-uk-one-login-integration-environment)
 
 ## How to run the example using GOV.UK One Login integration environment
 
-Tech docs on how to run and test using simulator are available [here](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-using-the-gov-uk-one-login-integration-environment)
-
-> You can configure and test you service against . You will need the Client ID for production configuration against **GOV.UK One Login integration environment**
+Docs on how to run and test using `GOV.UK One Login integration environment` are available [here](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-using-the-gov-uk-one-login-integration-environment)
 
 
 ## Utlity helpers
@@ -65,15 +63,21 @@ npm run  showPublicKey
 
 ### Key not working
 
-Correct key settings in .env.integration file
+Double check configuration in .env.integration file and **GOV.UK One Login integration environment**
+> [!TIP]
+>
 > Ensure the `OIDC_PRIVATE_KEY` value is in quotes and strip **-----BEGIN PRIVATE KEY-----** and **-----END PRIVATE KEY-----**
 
+> [!TIP]
+>
 > Double check the `Client ID` and the configuration matches the local .env.integration config and in **GOV.UK One Login integration environment**
 
 ## Pre-paring for production
 
 Production config is seperate from  *GOV.UK One Login integration environment*
 
-You will need the `Client ID` you have tested the integration against. 
+> [!NOTE]
+>
+> You will need the `Client ID` you have tested the integration against. 
 
 Further docs configuring for production are available [here](https://docs.sign-in.service.gov.uk/configure-for-production/) 
