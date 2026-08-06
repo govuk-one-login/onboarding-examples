@@ -47,6 +47,14 @@ In the [admin](https://admin.sign-in.service.gov.uk/) tool
 >
 > http://localhost:8083/oidc/authorization-code/callback
 
+### 2. Starting the tool
+
+You have two options for starting
+- Using typesript
+    - cli
+    - IDE like vscode
+- Using Docker compose
+
 ### 2.1 Start the F2F tool with Typescript
 
 From the dir `tools/f2f-test`

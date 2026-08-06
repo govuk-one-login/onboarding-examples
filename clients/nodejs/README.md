@@ -33,14 +33,21 @@ git clone https://github.com/govuk-one-login/onboarding-examples
 cd onboarding-examples/clients/nodejs
 ```
 
+You have two options for running the nodejs example
+- Using typesript
+    - Cli
+    - IDE like vscode
+- Using Docker compose
+
 ## How to run the example using GOV.UK One Login Simulator
 
 Docs on how to run and test using `GOV.UK One Login Simulator` are available [here](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-with-the-gov-uk-one-login-simulator-using-docker-compose) and [here](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-using-the-gov-uk-one-login-integration-environment)
 
 ## How to run the example using GOV.UK One Login integration environment
 
-Docs on how to run and test using `GOV.UK One Login integration environment` are available [here](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-using-the-gov-uk-one-login-integration-environment)
 
+
+Docs on how to run and test using `GOV.UK One Login integration environment` are available [here](https://docs.sign-in.service.gov.uk/quick-start/#run-the-example-service-using-the-gov-uk-one-login-integration-environment)
 
 ## Utlity helpers
 There are some helper scripts you can use
