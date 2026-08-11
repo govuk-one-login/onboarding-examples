@@ -62,8 +62,8 @@ npm run generatekeys
 If you want see the contents of the generated key , you can read with a text editor of your choice or use these utilities
 
 ```bash
-npm run  showPrivateKey
-npm run  showPublicKey
+npm run showPrivateKey
+npm run showPublicKey
 ```
 
 ## Toubleshooting tips
