@@ -23,8 +23,8 @@ You have two choices for testing your service:
 
 |Environment|Description|
 |-----------|-----------|
-|GOV.UK One Login integration environment| A non-production environment for use when developing and testing an integration with GOV.UK One Login. Use the [GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk/register/enter-email-address) to create a client configuration then configure the Client ID, Public Key, etc in the  `.env.integration` configuration file.|
-|GOV.UK One Login Simulator| A development and testing tool that simulates GOV.UK One Login. It is preconfigured to allow authentication and identity journeys by default and may be configured to suit your testing needs. The source code for simulator is available [here](https://github.com/govuk-one-login/simulator) |
+|GOV.UK One Login integration environment| A non-production environment for use when developing and testing an integration with GOV.UK One Login. Use the [GOV.UK One Login admin tool](https://admin.sign-in.service.gov.uk/register/enter-email-address) to create a client configuration then configure the Client ID, Public Key, etc in the  `.env.integration` configuration file. The integration environment should not be used for automated and performance testing.|
+|GOV.UK One Login Simulator| A development and testing tool that simulates GOV.UK One Login. It is preconfigured to allow authentication and identity journeys by default and may be configured to suit your testing needs. The source code for simulator is available [here](https://github.com/govuk-one-login/simulator). You can use the simulator for automated tests in your environment. |
 
 ## Get the example source code
 
@@ -87,4 +87,4 @@ Production config is seperate from  *GOV.UK One Login integration environment*
 >
 > You will need the `Client ID` you have tested the integration against. 
 
-Further docs configuring for production are available [here](https://docs.sign-in.service.gov.uk/configure-for-production/) 
+Further docs configuring for production are available [here](https://docs.sign-in.service.gov.uk/configure-for-production/)
