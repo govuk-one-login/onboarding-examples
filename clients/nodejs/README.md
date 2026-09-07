@@ -79,7 +79,7 @@ Double check configuration in .env.integration file and **GOV.UK One Login integ
 >
 > Double check the `Client ID` and the configuration matches the local .env.integration config and in **GOV.UK One Login integration environment**
 
-## Pre-paring for production
+## Preparing for production
 
 Production config is seperate from  *GOV.UK One Login integration environment*
 
