@@ -13,6 +13,7 @@ See the application specific README files for guidance on how to get these sampl
 |-------|-|--------|-----------|-----|
 | Node.js | 22.11.0 | [Typescript](https://www.typescriptlang.org/) | Typescript using the express framework| [README](clients/nodejs/README.md) |
 | Salesforce | | [Apex](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dev_guide.htm) | Apex using the Salesforce framework |  [README](clients/salesforce-apex/README.md) |
++| Amazon Cognito | | [Configuration](clients/amazon-cognito/README.md) | Amazon Cognito setup guide | [README](clients/amazon-cognito/README.md) |
 
 For up-to-date technical documentation detailing how to integrate with GOV.UK One Login see the [technical documentation](https://docs.sign-in.service.gov.uk/).
 
@@ -26,3 +27,4 @@ Examples of:
 
 ## Tools
 - [Generate a Time-based one-time password (TOTP) in TypeScript](tools/totp)
+- [Face-to-face identity verification test tool](tools/f2f-test)

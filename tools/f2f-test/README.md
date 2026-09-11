@@ -28,12 +28,40 @@ In the `f2f-test` directory configure the `.env` file as follows:
 - set `OIDC_PRIVATE_KEY` to the private key (without headers and linefeeds, all on one line)
 - set `F2F_LANDING_PAGE_URL` to `http://localhost:8080/landing-page`, the URL you want the user redirected to after clicking the link in the post office return email and successfully authenticating.
 
+#### 1.1 Configure client in admin tool
+
+In the [admin](https://admin.sign-in.service.gov.uk/) tool
+1. Select your service from **You services** 
+2. Got to  `Manage client > Redirect URIs`
+3. Click Change
+4. Set ->  Enter post logout redirect URI as `http://localhost:8083/oidc/authorization-code/callback` and  click `confirm`
+
+
+> [!TIP]
+>
+> Now both URLs should be present under
+>
+> **Redirect URIs**
+>
+> http://localhost:8080/oidc/authorization-code/callback
+>
+> http://localhost:8083/oidc/authorization-code/callback
+
+### 2. Starting the tool
+
+You have two options for starting
+- Using typesript
+    - cli
+    - IDE like vscode
+- Using Docker compose
+
 ### 2.1 Start the F2F tool with Typescript
 
+From the dir `tools/f2f-test`
+
+Run
 ```bash
-npm install
-npm run build
-npm run start
+nvm install 22.11.0 && nvm use 22.11.0 && npm install && npm run build && npm run dev
 ```
 
 ### 2.2 Start the F2F tool with Docker Compose
@@ -51,8 +79,6 @@ You will be redirected to an example email to start the test process. Click on t
 
 
 ## How it works
-
-
 
 ```mermaid
 

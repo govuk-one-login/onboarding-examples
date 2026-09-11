@@ -33,7 +33,14 @@ Select "Authenticator app" from the dropdown menu.
 Copy the secret key (in this example it is `Y3BU OUHH 4CB7 JQNQ GYRS TUC5 PAHY RJAJ`) and pass it as a parameter to the command line tool `totp.ts`
 
 ## Run locally
+
+The code in the command below must be what you copied without spaces. You can run the command
+
 ```
-npm install
+nvm install 22.11.0 && nvm use 22.11.0 && npm install
 npx ts-node ./totp.ts Y3BUOUHH4CB7JQNQGYRSTUC5PAHYRJAJ
 ```
+
+You will get a code on the console.
+
+This code can be used to continue using the 6 digit **Security code**
