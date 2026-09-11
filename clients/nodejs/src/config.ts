@@ -14,6 +14,7 @@ export class Config {
             nodeEnv: process.env.NODE_ENV || "development",
             clientId: process.env.OIDC_CLIENT_ID ?? "",
             privateKey: process.env.OIDC_PRIVATE_KEY ?? "",
+            publicKeyId: process.env.OIDC_PUBLIC_KEY_ID ?? "",
             clientSecret: process.env.OIDC_CLIENT_SECRET ?? "",           
             issuer: process.env.OIDC_ISSUER ?? "https://oidc.integration.account.gov.uk/",
             discoveryUrl: process.env.OIDC_ISSUER 
@@ -36,7 +37,8 @@ export class Config {
             serviceUrl: process.env.SERVICE_URL ?? "",
             immediateRedirect: process.env.IMMEDIATE_REDIRECT == "true",
             requireJAR: process.env.REQUIRE_JAR == "true",
-            identitySupported: process.env.IDENTITY_SUPPORTED == "true"
+            identitySupported: process.env.IDENTITY_SUPPORTED == "true",
+            includeKidInJwt: process.env.INCLUDE_KID_IN_JWT == "true"
         };
     }
 
@@ -161,4 +163,12 @@ export class Config {
     public getIdentitySupported(): boolean {
         return this.clientConfiguration.identitySupported;
     }
+
+    public getPublicKeyId(): string {
+        return this.clientConfiguration.publicKeyId!;
+    }
+
+    public getIncludeKidInJwt(): boolean {
+        return this.clientConfiguration.includeKidInJwt;
+    } 
 }

@@ -36,6 +36,9 @@ export const authorizeController = async (
             const issuer: string = clientConfig.getIssuer()
             let substituteAudience: openidClient.ModifyAssertionOptions = {
                 [openidClient.modifyAssertion]: (header, _payload) => {
+                    if (clientConfig.getIncludeKidInJwt() && clientConfig.getPublicKeyId() !== "") {
+                        header.kid = clientConfig.getPublicKeyId();
+                    }
                     _payload.aud = `${issuer}authorize`
                 }
             };
