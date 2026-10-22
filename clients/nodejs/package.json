@@ -25,6 +25,7 @@
     "dev:int": "tsx watch --clear-screen=false --env-file=.env.integration src/server.ts",
     "dev:cognito": "tsx watch --clear-screen=false --env-file=.env.simulator src/server.ts",
     "dev:sim": "tsx watch --clear-screen=false --env-file=.env.simulator src/server.ts",
+    "dev:sim:jwks": "tsx watch --clear-screen=false --env-file=.env.simulator.jwks src/server.ts",
     "generatekeys": "test -a private_key.pem || (openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:2048 && openssl rsa -pubout -in private_key.pem -out public_key.pem)",
     "showPrivateKey": "cat private_key.pem",
     "showPublicKey": "cat public_key.pem",

@@ -19,6 +19,7 @@ export const getDiscoveryMetadata = async (
                 [openidClient.modifyAssertion]: (header, _payload) => {
                     if (clientConfig.getIncludeKidInJwt() && clientConfig.getPublicKeyId() !== "") {
                         header.kid = clientConfig.getPublicKeyId();
+                        header.alg = "PS256";
                     }
                     _payload.aud = `${issuer}token`
                 }
