@@ -1,0 +1,16 @@
+{
+  "keys": [
+    {
+      "alg": "PS256",
+      "e": "AQAB",
+      "ext": true,
+      "key_ops": [
+        "verify"
+      ],
+      "kty": "RSA",
+      "n": "7VxYXjVte5b5OAtvZqqMs-vpPG4jDpmtn8JLCTP7QSUYRCrRlt4jLFzxHqa696oY_6LNKm1en78xcUtwQLDoLAXBqEjrWYPUQO4onvNolzTbphgcQ9jdU1g1wMsKPdMj_thtlUPGWgvZg_cHw4ZaBlhDeTdV7PhJ-VR-Sy9t8UGQxOj37BvZezFb59ShdsSAYtHYBJcy_je5YlfSdLDCVWEEUN231C4Lh_1A4j2GRL-bkpWtYlvbe72ykOZKUlGasaObrpxip5zAWwTVaXmG2M-GC4VoInXVmut1wbO9nklonC94OZG5tzHPhInQVQ-Li2g8DnACEkHmq2DEZnzORw",
+      "kid": "Bp/RQzAbTlqZCSNxW/UZ7evM6q3u1GMNI4xbWdPTaWg=",
+      "use": "sig"
+    }
+  ]
+}

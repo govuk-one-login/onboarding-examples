@@ -6,6 +6,7 @@ export default interface ClientConfiguration {
   nodeEnv: string;
   clientId?: string;
   privateKey?: string;
+  publicKeyId?: string;
   clientSecret?: string;
   issuer?: string;
   discoveryUrl?: string;
@@ -25,4 +26,5 @@ export default interface ClientConfiguration {
   immediateRedirect: boolean;
   requireJAR: boolean;
   identitySupported: boolean;
+  includeKidInJwt: boolean;
 }

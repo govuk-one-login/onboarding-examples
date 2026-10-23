@@ -28,3 +28,4 @@ Examples of:
 ## Tools
 - [Generate a Time-based one-time password (TOTP) in TypeScript](tools/totp)
 - [Face-to-face identity verification test tool](tools/f2f-test)
+- [Local JWKS server](tools/jwks)
