@@ -15,6 +15,7 @@ export class Config {
             clientId: process.env.OIDC_CLIENT_ID ?? "",
             privateKey: process.env.OIDC_PRIVATE_KEY ?? "",
             publicKeyId: process.env.OIDC_PUBLIC_KEY_ID ?? "",
+            publicKeyAlg: process.env.OIDC_PUBLIC_KEY_ALG ?? "",
             clientSecret: process.env.OIDC_CLIENT_SECRET ?? "",           
             issuer: process.env.OIDC_ISSUER ?? "https://oidc.integration.account.gov.uk/",
             discoveryUrl: process.env.OIDC_ISSUER 
@@ -166,6 +167,10 @@ export class Config {
 
     public getPublicKeyId(): string {
         return this.clientConfiguration.publicKeyId!;
+    }
+
+    public getPublicKeyAlg(): string {
+        return this.clientConfiguration.publicKeyAlg!;
     }
 
     public getIncludeKidInJwt(): boolean {

@@ -7,6 +7,7 @@ export default interface ClientConfiguration {
   clientId?: string;
   privateKey?: string;
   publicKeyId?: string;
+  publicKeyAlg?: string;
   clientSecret?: string;
   issuer?: string;
   discoveryUrl?: string;

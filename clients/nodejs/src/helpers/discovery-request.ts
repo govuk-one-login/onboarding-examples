@@ -17,9 +17,9 @@ export const getDiscoveryMetadata = async (
             // Modify the audience claim in the private_key_jwt            
             let substituteAudience: openidClient.ModifyAssertionOptions = {
                 [openidClient.modifyAssertion]: (header, _payload) => {
-                    if (clientConfig.getIncludeKidInJwt() && clientConfig.getPublicKeyId() !== "") {
+                    if (clientConfig.getIncludeKidInJwt() && clientConfig.getPublicKeyId() !== "" && clientConfig.getPublicKeyAlg() !== "") {
                         header.kid = clientConfig.getPublicKeyId();
-                        header.alg = "PS256";
+                        header.alg = clientConfig.getPublicKeyAlg();
                     }
                     _payload.aud = `${issuer}token`
                 }
